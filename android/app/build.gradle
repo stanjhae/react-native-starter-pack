@@ -131,9 +131,16 @@ android {
         applicationId "com.uptown"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
+        missingDimensionStrategy "RNN.reactNativeVersion", "reactNative60"
         versionCode 1
         versionName "1.0"
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     splits {
         abi {
             reset()
@@ -179,8 +186,10 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-safe-area-context')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation project(':react-native-navigation')
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";

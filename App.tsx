@@ -1,11 +1,31 @@
-import React from 'react';
-import {Text, View} from 'react-native';
+import { Navigation } from 'react-native-navigation';
+import RegisterScreens from './src/navigation/registerScreens';
 
-const App = () => (
-  <View style={{justifyContent: 'center', flex: 1, alignItems: 'center'}}>
-    <Text>UP TOWN</Text>
-  </View>
-);
+RegisterScreens();
 
-export default App;
-
+Navigation.events().registerAppLaunchedListener(() => {
+  Navigation.setRoot({
+    root: {
+      stack: {
+        id: 'ChooseAuthStack',
+        children: [
+          {
+            component: {
+              name: 'LogInScreen',
+            },
+          },
+          {
+            component: {
+              name: 'SignUpScreen',
+            },
+          },
+          {
+            component: {
+              name: 'ChooseAuthScreen',
+            },
+          },
+        ],
+      },
+    },
+  });
+});
