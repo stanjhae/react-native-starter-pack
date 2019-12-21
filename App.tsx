@@ -12,3 +12,5 @@ Navigation.events().registerAppLaunchedListener(() => {
     },
   });
 });
+
+export default App;
