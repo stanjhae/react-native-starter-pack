@@ -1,11 +1,16 @@
-import React from 'react';
-import {Text, View} from 'react-native';
+import {Navigation} from 'react-native-navigation';
+import ChooseAuthScreen from './src/screens/chooseAuthScreen/chooseAuthScreen';
 
-const App = () => (
-  <View style={{justifyContent: 'center', flex: 1, alignItems: 'center'}}>
-    <Text>UP TOWN</Text>
-  </View>
-);
+Navigation.registerComponent('ChooseAuthScreen', () => ChooseAuthScreen);
+
+Navigation.events().registerAppLaunchedListener(() => {
+  Navigation.setRoot({
+    root: {
+      component: {
+        name: 'ChooseAuthScreen',
+      },
+    },
+  });
+});
 
 export default App;
-
