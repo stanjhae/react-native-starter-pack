@@ -1,13 +1,30 @@
-import {Navigation} from 'react-native-navigation';
-import ChooseAuthScreen from './src/screens/chooseAuthScreen/chooseAuthScreen';
+import { Navigation } from 'react-native-navigation';
+import RegisterScreens from './src/navigation/registerScreens';
 
-Navigation.registerComponent('ChooseAuthScreen', () => ChooseAuthScreen);
+RegisterScreens();
 
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
     root: {
-      component: {
-        name: 'ChooseAuthScreen',
+      stack: {
+        id: 'ChooseAuthStack',
+        children: [
+          {
+            component: {
+              name: 'LogInScreen',
+            },
+          },
+          {
+            component: {
+              name: 'SignUpScreen',
+            },
+          },
+          {
+            component: {
+              name: 'ChooseAuthScreen',
+            },
+          },
+        ],
       },
     },
   });
