@@ -34,7 +34,7 @@ target 'uptown' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  pod 'react-native-safe-area-context', :path => '../node_modules/react-native-safe-area-context'
+  pod 'ReactNativeDarkMode', :path => '../node_modules/react-native-dark-mode'
 
   target 'uptownTests' do
     inherit! :search_paths

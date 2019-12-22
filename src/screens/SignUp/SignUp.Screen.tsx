@@ -2,12 +2,10 @@ import React, { FC } from 'react';
 import ScreenWrapper from '../../components/ScreenWrapper/ScreenWrapper';
 import Text from '../../components/Text/Text';
 
-const LogInScreen: FC<any> = () => {
-  return (
-    <ScreenWrapper>
-      <Text>LoginScreen</Text>
-    </ScreenWrapper>
-  );
-};
+const SigUpScreen: FC = () => (
+  <ScreenWrapper>
+    <Text>Sign up screen</Text>
+  </ScreenWrapper>
+);
 
-export default LogInScreen;
+export default SigUpScreen;
