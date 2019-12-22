@@ -4,7 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
-import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
+import com.codemotionapps.reactnativedarkmode.DarkModePackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
@@ -41,7 +41,7 @@ public class MainApplication extends NavigationApplication {
                 // Add additional packages you require here
                 // No need to add RnnPackage and MainReactPackage
                 return Arrays.<ReactPackage>asList(
-                    // eg. new VectorIconsPackage()
+                        new DarkModePackage()
                 );
             }
 
