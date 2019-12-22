@@ -20,3 +20,25 @@ export const pushScreen = (
 export const popScreen = (stackToPopFrom: string) => {
   Navigation.pop(stackToPopFrom);
 };
+
+export const showModal = (
+  stackName: string,
+  screenName: string,
+  props?: object,
+) =>
+  Navigation.showModal({
+    stack: {
+      id: stackName,
+      children: [
+        {
+          component: {
+            name: screenName,
+            passProps: {
+              currentStack: stackName,
+              ...props,
+            },
+          },
+        },
+      ],
+    },
+  });
