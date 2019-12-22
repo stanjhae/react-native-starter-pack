@@ -11,10 +11,14 @@
     "lint-fix": "eslint . --fix --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "i18next": "^19.0.2",
     "react": "16.9.0",
+    "react-i18next": "^11.2.7",
     "react-native": "0.61.5",
     "react-native-dark-mode": "^0.2.1",
-    "react-native-navigation": "^4.0.8"
+    "react-native-navigation": "^4.0.8",
+    "react-native-safe-area-context": "^0.6.1",
+    "react-native-safe-area-view": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
@@ -29,6 +33,7 @@
     "eslint": "^6.5.1",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
+    "react-native-bundle-visualizer": "^2.1.1",
     "react-test-renderer": "16.9.0",
     "typescript": "^3.7.3"
   },

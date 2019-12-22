@@ -10,11 +10,10 @@ import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
 
-
-
 import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
 import com.reactnativenavigation.react.ReactGateway;
+import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 
 import java.util.List;
 import java.util.Arrays;
@@ -41,7 +40,8 @@ public class MainApplication extends NavigationApplication {
                 // Add additional packages you require here
                 // No need to add RnnPackage and MainReactPackage
                 return Arrays.<ReactPackage>asList(
-                        new DarkModePackage()
+                        new DarkModePackage(),
+                        new SafeAreaContextPackage()
                 );
             }
 

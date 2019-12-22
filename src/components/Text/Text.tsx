@@ -1,19 +1,26 @@
 import React, { FC } from 'react';
-import { Text as T } from 'react-native';
+import { StyleProp, Text as T, TextStyle } from 'react-native';
 import {
   DynamicStyleSheet,
   DynamicValue,
   useDynamicStyleSheet,
 } from 'react-native-dark-mode';
+import { baseFontSize, normalFont } from '../../constants/constants';
 
-const Text: FC = ({ children }) => {
+interface TextProps {
+  style?: StyleProp<TextStyle>;
+}
+
+const Text: FC<TextProps> = ({ children, style }) => {
   const TextStyles = useDynamicStyleSheet(styles);
-  return <T style={TextStyles.text}>{children}</T>;
+  return <T style={[TextStyles.text, { ...(style as object) }]}>{children}</T>;
 };
 
 const styles = new DynamicStyleSheet({
   text: {
     color: new DynamicValue('black', 'white'),
+    fontSize: baseFontSize,
+    fontFamily: normalFont,
   },
 });
 

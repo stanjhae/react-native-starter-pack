@@ -1,28 +1,34 @@
 import React, { FC } from 'react';
-import { Button, SafeAreaView } from 'react-native';
-import { pushScreen } from '../../navigation/navigation.functions';
-import { useDarkMode, eventEmitter } from 'react-native-dark-mode';
+import { Button, StyleSheet, View } from 'react-native';
+import Text from '../../components/Text/Text';
+import { useTranslation } from 'react-i18next';
 import ScreenWrapper from '../../components/ScreenWrapper/ScreenWrapper';
 
-eventEmitter.on('currentModeChanged', newMode => {
-  console.log('Switched to', newMode, 'mode');
-});
-
 const ChooseAuthScreen: FC = () => {
-  const isDarkMode = useDarkMode();
-  console.log(isDarkMode);
+  const { t, i18n } = useTranslation();
+
   return (
     <ScreenWrapper>
-      <Button
-        title="Login"
-        onPress={() => pushScreen('ChooseAuthStack', 'LogInScreen')}
-      />
-      <Button
-        title="Sign up"
-        onPress={() => pushScreen('ChooseAuthStack', 'SignUpScreen')}
-      />
+      <View style={ChooseAuthScreenStyles.container}>
+        <Text>{t('hello')}</Text>
+        <Button
+          title="Change language"
+          onPress={() =>
+            i18n.changeLanguage(i18n.language === 'en' ? 'hu' : 'en')
+          }
+        />
+      </View>
     </ScreenWrapper>
   );
 };
+
+const ChooseAuthScreenStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    paddingBottom: 15,
+  },
+});
 
 export default ChooseAuthScreen;
