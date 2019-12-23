@@ -7,6 +7,19 @@ export const pushScreen = (
 ) => {
   Navigation.push(stackToPushTo, {
     component: {
+      options: {
+        topBar: {
+          title: {
+            component: {
+              name: 'LogInScreen',
+            },
+          },
+          drawBehind: true,
+          background: {
+            translucent: true,
+          },
+        },
+      },
       id: screenToPush,
       name: screenToPush,
       passProps: {

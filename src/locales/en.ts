@@ -1,5 +1,12 @@
 export default {
   translation: {
-    hello: 'Hello',
+    general: {
+      logIn: 'Log in',
+      signUp: 'Sign up',
+      facebook: 'Facebook',
+    },
+    chooseAuthScreen: {
+      dontHaveAnAccount: "Don't have an account?",
+    },
   },
 };

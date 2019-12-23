@@ -1,5 +1,5 @@
 import { Navigation } from 'react-native-navigation';
-import ChooseAuthScreen from '../screens/ChooseAuth/ChooseAuthScreen';
+import ChooseAuthScreen from '../screens/ChooseAuth/ChooseAuth.Screen';
 import LogInScreen from '../screens/LogIn/LogIn.Screen';
 import SigUpScreen from '../screens/SignUp/SignUp.Screen';
 import ComponentProvider from '../components/ComponentProvider/ComponentProvider';

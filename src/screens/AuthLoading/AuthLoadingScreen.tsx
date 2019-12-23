@@ -25,7 +25,7 @@ const AuthLoadingScreen: FC = () => {
           },
         },
       });
-    }, 2000);
+    }, 200);
   });
   return (
     <ScreenWrapper>

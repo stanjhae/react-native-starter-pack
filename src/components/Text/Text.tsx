@@ -9,11 +9,12 @@ import { baseFontSize, normalFont } from '../../constants/constants';
 
 interface TextProps {
   style?: StyleProp<TextStyle>;
+  onPress?: any;
 }
 
-const Text: FC<TextProps> = ({ children, style }) => {
+const Text: FC<TextProps> = ({ children, style, onPress }) => {
   const TextStyles = useDynamicStyleSheet(styles);
-  return <T style={[TextStyles.text, { ...(style as object) }]}>{children}</T>;
+  return <T onPress={onPress} style={[TextStyles.text, { ...(style as object) }]}>{children}</T>;
 };
 
 const styles = new DynamicStyleSheet({

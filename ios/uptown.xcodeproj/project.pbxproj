@@ -664,7 +664,7 @@
 			baseConfigurationReference = E7FD083861154F7E0D448501 /* Pods-uptown.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 633C5ZZM9U;
 				INFOPLIST_FILE = uptown/Info.plist;
@@ -685,7 +685,7 @@
 			baseConfigurationReference = 497A548114733090F075620D /* Pods-uptown.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 633C5ZZM9U;
 				INFOPLIST_FILE = uptown/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
