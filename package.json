@@ -11,6 +11,8 @@
     "lint-fix": "eslint . --fix --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@rematch/core": "^1.3.0",
+    "@rematch/select": "^2.0.5",
     "i18next": "^19.0.2",
     "react": "16.9.0",
     "react-i18next": "^11.2.7",
@@ -31,12 +33,21 @@
     "@typescript-eslint/eslint-plugin": "^2.12.0",
     "@typescript-eslint/parser": "^2.12.0",
     "babel-jest": "^24.9.0",
+    "babel-plugin-module-resolver": "^4.0.0",
     "eslint": "^6.5.1",
+    "husky": "^3.1.0",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
     "react-native-bundle-visualizer": "^2.1.1",
     "react-test-renderer": "16.9.0",
     "typescript": "^3.7.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   },
   "jest": {
     "preset": "react-native",
