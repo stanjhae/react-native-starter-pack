@@ -4,10 +4,10 @@ import {
   DynamicValue,
   useDynamicStyleSheet,
 } from 'react-native-dark-mode';
-import constants, { boldFont } from '../../constants/constants';
-import Text from '../../components/Text/Text';
+import constants, { boldFont } from 'constants/constants';
+import Text from 'components/Text/Text';
 import { useTranslation } from 'react-i18next';
-import TouchableOpacity from '../../components/ToucbableOpacity/TouchableOpacity';
+import TouchableOpacity from 'components/ToucbableOpacity/TouchableOpacity';
 
 interface ChooseAuthButtonProps {
   name: string;

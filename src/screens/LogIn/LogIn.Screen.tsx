@@ -1,3 +1,7 @@
+import React, { FC } from 'react';
+import ScreenWrapper from 'components/ScreenWrapper/ScreenWrapper';
+import Text from 'components/Text/Text';
+import { ScrollView } from 'react-native';
 import React, { FC, useRef, useState } from 'react';
 import ScreenWrapper from '../../components/ScreenWrapper/ScreenWrapper';
 import TextInput from '../../components/TextInput/TextInput';
