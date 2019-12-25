@@ -6,7 +6,7 @@ import ScreenWrapper from '../../components/ScreenWrapper/ScreenWrapper';
 import OtherText from '../../components/OtherText/OtherText';
 import ChooseAuthButton from './ChooseAuth.Button';
 import { pushScreen } from '../../navigation/navigation.actions';
-import { mainAppColor } from '../../constants/colors';
+import { mainAppColor } from 'constants/colors';
 import SplashScreen from 'react-native-splash-screen';
 
 const ChooseAuthScreen: FC = () => {

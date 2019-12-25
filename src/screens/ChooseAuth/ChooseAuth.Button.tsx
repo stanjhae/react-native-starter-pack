@@ -4,7 +4,7 @@ import {
   DynamicValue,
   useDynamicStyleSheet,
 } from 'react-native-dark-mode';
-import constants, { boldFont } from 'constants/constants';
+import constants, { boldFont } from 'constants/constants.ts';
 import Text from 'components/Text/Text';
 import { useTranslation } from 'react-i18next';
 import TouchableOpacity from 'components/ToucbableOpacity/TouchableOpacity';

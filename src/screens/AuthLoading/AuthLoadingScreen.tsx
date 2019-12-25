@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from 'react';
-import Text from '../../components/Text/Text';
+import Text from 'components/Text/Text';
 import { Navigation } from 'react-native-navigation';
-import ScreenWrapper from '../../components/ScreenWrapper/ScreenWrapper';
+import ScreenWrapper from 'components/ScreenWrapper/ScreenWrapper';
 
 const AuthLoadingScreen: FC = () => {
   useEffect(() => {

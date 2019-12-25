@@ -1,5 +1,5 @@
 import { Navigation } from 'react-native-navigation';
-import { mediumFont } from '../../constants/constants';
+import { mediumFont } from 'constants/constants';
 import i18next from 'i18next';
 import { Platform } from 'react-native';
 

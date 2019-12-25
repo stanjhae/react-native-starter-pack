@@ -1,8 +1,5 @@
-import React, { FC } from 'react';
 import ScreenWrapper from 'components/ScreenWrapper/ScreenWrapper';
-import Text from 'components/Text/Text';
 import React, { FC, useRef } from 'react';
-import ScreenWrapper from '../../components/ScreenWrapper/ScreenWrapper';
 import KeyboardAvoidingView from '../../components/KeyboardAvoidingView/KeyboardAvoidingView';
 import ScrollView from '../../components/ScrollView/ScrollView';
 import TextInput from '../../components/TextInput/TextInput';

@@ -1,19 +1,15 @@
-import React, { FC } from 'react';
 import ScreenWrapper from 'components/ScreenWrapper/ScreenWrapper';
-import Text from 'components/Text/Text';
-import { ScrollView } from 'react-native';
 import React, { FC, useRef, useState } from 'react';
-import ScreenWrapper from '../../components/ScreenWrapper/ScreenWrapper';
-import TextInput from '../../components/TextInput/TextInput';
-import KeyboardAvoidingView from '../../components/KeyboardAvoidingView/KeyboardAvoidingView';
-import ScrollView from '../../components/ScrollView/ScrollView';
-import OtherText from '../../components/OtherText/OtherText';
-import { mediumFont } from '../../constants/constants';
+import TextInput from 'components/TextInput/TextInput';
+import KeyboardAvoidingView from 'components/KeyboardAvoidingView/KeyboardAvoidingView';
+import ScrollView from 'components/ScrollView/ScrollView';
+import OtherText from 'components/OtherText/OtherText';
+import { mediumFont } from 'constants/constants';
 import { useTranslation } from 'react-i18next';
 import { showForgotPasswordModal } from './Login.functions';
-import BottomButton from '../../components/BottomButton/BottomButton';
-import { mainAppColor } from '../../constants/colors';
-import Haptic from '../../utils/Haptic';
+import BottomButton from 'components/BottomButton/BottomButton';
+import { mainAppColor } from 'constants/colors';
+import Haptic from 'utils/Haptic';
 
 const LogInScreen: FC = () => {
   const secondInput = useRef(null);
