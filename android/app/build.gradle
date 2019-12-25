@@ -186,6 +186,9 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-splash-screen')
+    implementation project(':react-native-haptic-feedback')
+    implementation project(':react-native-linear-gradient')
     implementation project(':react-native-dark-mode')
     implementation project(':react-native-safe-area-context')
     implementation fileTree(dir: "libs", include: ["*.jar"])

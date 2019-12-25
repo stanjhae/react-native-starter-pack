@@ -4,6 +4,7 @@ import LogInScreen from '../screens/LogIn/LogIn.Screen';
 import SigUpScreen from '../screens/SignUp/SignUp.Screen';
 import ComponentProvider from '../components/ComponentProvider/ComponentProvider';
 import AuthLoadingScreen from '../screens/AuthLoading/AuthLoadingScreen';
+import ForgotPasswordScreen from '../screens/ForgotPassword/ForgotPassword.Screen';
 
 const registerScreens = () => {
   Navigation.registerComponent(
@@ -25,6 +26,11 @@ const registerScreens = () => {
     'SignUpScreen',
     () => ComponentProvider(SigUpScreen),
     () => LogInScreen,
+  );
+  Navigation.registerComponent(
+    'ForgotPasswordScreen',
+    () => ComponentProvider(ForgotPasswordScreen),
+    () => ForgotPasswordScreen,
   );
 };
 

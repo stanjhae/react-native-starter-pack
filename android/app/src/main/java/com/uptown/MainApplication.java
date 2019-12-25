@@ -1,14 +1,10 @@
 package com.uptown;
 
-import android.app.Application;
-import android.content.Context;
-import com.facebook.react.PackageList;
-import com.facebook.react.ReactApplication;
+import com.mkuczera.RNReactNativeHapticFeedbackPackage;
+import com.BV.LinearGradient.LinearGradientPackage;
 import com.codemotionapps.reactnativedarkmode.DarkModePackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
-import com.facebook.soloader.SoLoader;
-import java.lang.reflect.InvocationTargetException;
 
 import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
@@ -37,11 +33,11 @@ public class MainApplication extends NavigationApplication {
             }
 
            protected List<ReactPackage> getPackages() {
-                // Add additional packages you require here
-                // No need to add RnnPackage and MainReactPackage
                 return Arrays.<ReactPackage>asList(
+                        new LinearGradientPackage(),
                         new DarkModePackage(),
-                        new SafeAreaContextPackage()
+                        new SafeAreaContextPackage(),
+                        new RNReactNativeHapticFeedbackPackage()
                 );
             }
 

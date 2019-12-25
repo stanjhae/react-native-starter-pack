@@ -20,7 +20,9 @@
 		2DCD954D1E0B4F2C00145EB5 /* uptownTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* uptownTests.m */; };
 		43F888669B34305623A31704 /* libPods-uptown-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A145B7762DC0201F554603 /* libPods-uptown-tvOS.a */; };
 		6AAB08DCF0411656D3957A0E /* libPods-uptownTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 476CB6A2C74CA74EAC909696 /* libPods-uptownTests.a */; };
+		6C384E4E23B2D1A10053C8E9 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C384E4D23B2D1A10053C8E9 /* File.swift */; };
 		75531ED5F2E444E3B50970E1 /* AirbnbCereal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6AA33C09728A4E46BE0B7657 /* AirbnbCereal-Light.ttf */; };
+		83F3328279F94068BACBDAA6 /* ZapfinoExtraLT-One.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B7AF75844F34CF188DCA4BD /* ZapfinoExtraLT-One.otf */; };
 		861D7F2129654D2E866E2584 /* AirbnbCereal-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9071E549F3DA448CA40F4712 /* AirbnbCereal-Bold.ttf */; };
 		96BD8317E8C83850F755F9AC /* libPods-uptown-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ED97159D71FCA39E3104B6B /* libPods-uptown-tvOSTests.a */; };
 		CF74CE0DCDE8487FBAF2D7AB /* AirbnbCereal-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8D2711D1DB7462F9D3BC38B /* AirbnbCereal-Black.ttf */; };
@@ -50,6 +52,7 @@
 		00E356EE1AD99517003FC87E /* uptownTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = uptownTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* uptownTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = uptownTests.m; sourceTree = "<group>"; };
+		0B7AF75844F34CF188DCA4BD /* ZapfinoExtraLT-One.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "ZapfinoExtraLT-One.otf"; path = "../assets/ZapfinoExtraLT-One.otf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Uptown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uptown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = uptown/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = uptown/AppDelegate.m; sourceTree = "<group>"; };
@@ -71,6 +74,8 @@
 		497A548114733090F075620D /* Pods-uptown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uptown.release.xcconfig"; path = "Target Support Files/Pods-uptown/Pods-uptown.release.xcconfig"; sourceTree = "<group>"; };
 		64BAF9A7AC7C31AAE5580057 /* Pods-uptown-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uptown-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-uptown-tvOSTests/Pods-uptown-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		6AA33C09728A4E46BE0B7657 /* AirbnbCereal-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AirbnbCereal-Light.ttf"; path = "../assets/AirbnbCereal-Light.ttf"; sourceTree = "<group>"; };
+		6C384E4C23B2D1A10053C8E9 /* uptown-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "uptown-Bridging-Header.h"; sourceTree = "<group>"; };
+		6C384E4D23B2D1A10053C8E9 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		6EDA5A58FB709DBDA52CF67B /* Pods-uptown-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uptown-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-uptown-tvOSTests/Pods-uptown-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8BAED9FB7D4EC97E76EC59D6 /* Pods-uptownTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uptownTests.debug.xcconfig"; path = "Target Support Files/Pods-uptownTests/Pods-uptownTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9071E549F3DA448CA40F4712 /* AirbnbCereal-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AirbnbCereal-Bold.ttf"; path = "../assets/AirbnbCereal-Bold.ttf"; sourceTree = "<group>"; };
@@ -186,6 +191,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				6C384E4D23B2D1A10053C8E9 /* File.swift */,
 				13B07FAE1A68108700A75B9A /* uptown */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* uptownTests */,
@@ -193,6 +199,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				1843D626C4F402020C496305 /* Pods */,
 				DF87E8439271400FBE18079A /* Resources */,
+				6C384E4C23B2D1A10053C8E9 /* uptown-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -219,6 +226,7 @@
 				1635E14BAC3F43B5B6233F86 /* AirbnbCereal-ExtraBold.ttf */,
 				6AA33C09728A4E46BE0B7657 /* AirbnbCereal-Light.ttf */,
 				1E3DB5AA71B741539C32D8B9 /* AirbnbCereal-Medium.ttf */,
+				0B7AF75844F34CF188DCA4BD /* ZapfinoExtraLT-One.otf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -320,6 +328,7 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = 633C5ZZM9U;
+						LastSwiftMigration = 1130;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -374,6 +383,7 @@
 				151164E1B2BE40688BA7D49D /* AirbnbCereal-ExtraBold.ttf in Resources */,
 				75531ED5F2E444E3B50970E1 /* AirbnbCereal-Light.ttf in Resources */,
 				DB0A9F7A14B1419C9F7F7824 /* AirbnbCereal-Medium.ttf in Resources */,
+				83F3328279F94068BACBDAA6 /* ZapfinoExtraLT-One.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,6 +575,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				6C384E4E23B2D1A10053C8E9 /* File.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -618,6 +629,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8BAED9FB7D4EC97E76EC59D6 /* Pods-uptownTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 633C5ZZM9U;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -642,6 +654,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1EA8EB7BB199BA276BEC6434 /* Pods-uptownTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 633C5ZZM9U;
@@ -664,7 +677,8 @@
 			baseConfigurationReference = E7FD083861154F7E0D448501 /* Pods-uptown.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 5;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 6;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 633C5ZZM9U;
 				INFOPLIST_FILE = uptown/Info.plist;
@@ -676,6 +690,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.debrecen.uptown;
 				PRODUCT_NAME = Uptown;
+				SWIFT_OBJC_BRIDGING_HEADER = "uptown-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -685,7 +702,8 @@
 			baseConfigurationReference = 497A548114733090F075620D /* Pods-uptown.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 5;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 633C5ZZM9U;
 				INFOPLIST_FILE = uptown/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -696,6 +714,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.debrecen.uptown;
 				PRODUCT_NAME = Uptown;
+				SWIFT_OBJC_BRIDGING_HEADER = "uptown-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

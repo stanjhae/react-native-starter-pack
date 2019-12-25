@@ -1,8 +1,11 @@
 import { Navigation } from 'react-native-navigation';
+import { mediumFont } from '../constants/constants';
+import i18next from 'i18next';
 
 export const pushScreen = (
   stackToPushTo: string,
   screenToPush: string,
+  headerTitle: string,
   props?: object,
 ) => {
   Navigation.push(stackToPushTo, {
@@ -10,13 +13,9 @@ export const pushScreen = (
       options: {
         topBar: {
           title: {
-            component: {
-              name: 'LogInScreen',
-            },
-          },
-          drawBehind: true,
-          background: {
-            translucent: true,
+            text: i18next.t(headerTitle),
+            fontSize: 15,
+            fontFamily: mediumFont,
           },
         },
       },
@@ -37,6 +36,7 @@ export const popScreen = (stackToPopFrom: string) => {
 export const showModal = (
   stackName: string,
   screenName: string,
+  headerTitle: string,
   props?: object,
 ) =>
   Navigation.showModal({
@@ -45,6 +45,22 @@ export const showModal = (
       children: [
         {
           component: {
+            options: {
+              topBar: {
+                drawBehind: true,
+                leftButtons: [
+                  {
+                    id: 'one',
+                    systemItem: 'stop',
+                  },
+                ],
+                title: {
+                  text: i18next.t(headerTitle),
+                  fontSize: 15,
+                  fontFamily: mediumFont,
+                },
+              },
+            },
             name: screenName,
             passProps: {
               currentStack: stackName,
