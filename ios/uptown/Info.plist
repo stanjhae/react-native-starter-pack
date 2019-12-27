@@ -39,6 +39,8 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>We need to access your photo library so you can choose your profile image.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AirbnbCereal-Black.ttf</string>
@@ -60,5 +62,25 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+  <key>CFBundleURLTypes</key>
+  <array>
+    <dict>
+      <key>CFBundleURLSchemes</key>
+      <array>
+        <string>fb1445614175607774</string>
+      </array>
+    </dict>
+  </array>
+  <key>FacebookAppID</key>
+  <string>1445614175607774</string>
+  <key>FacebookDisplayName</key>
+  <string>Uptown</string>
+  <key>LSApplicationQueriesSchemes</key>
+  <array>
+    <string>fbapi</string>
+    <string>fb-messenger-share-api</string>
+    <string>fbauth2</string>
+    <string>fbshareextension</string>
+  </array>
 </dict>
 </plist>

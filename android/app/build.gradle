@@ -132,8 +132,10 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         missingDimensionStrategy "RNN.reactNativeVersion", "reactNative60"
+        vectorDrawables.useSupportLibrary = true
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
 
     compileOptions {
@@ -186,11 +188,14 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-image-crop-picker')
     implementation project(':react-native-dark-mode')
     implementation project(':react-native-safe-area-context')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation project(':react-native-navigation')
+    implementation 'com.facebook.android:facebook-login:5.13.0'
+    implementation project(':react-native-fbsdk')
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";
@@ -209,3 +214,4 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+apply plugin: 'com.google.gms.google-services'

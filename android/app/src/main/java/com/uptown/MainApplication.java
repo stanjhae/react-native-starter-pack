@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.reactnative.ivpusic.imagepicker.PickerPackage;
 import com.codemotionapps.reactnativedarkmode.DarkModePackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -15,6 +16,12 @@ import com.reactnativenavigation.react.NavigationReactNativeHost;
 import com.reactnativenavigation.react.ReactGateway;
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 
+import io.invertase.firebase.app.ReactNativeFirebaseAppPackage;
+import io.invertase.firebase.auth.ReactNativeFirebaseAuthPackage;
+import io.invertase.firebase.firestore.ReactNativeFirebaseFirestorePackage;
+import io.invertase.firebase.storage.ReactNativeFirebaseStoragePackage;
+
+import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import java.util.List;
 import java.util.Arrays;
 
@@ -41,7 +48,13 @@ public class MainApplication extends NavigationApplication {
                 // No need to add RnnPackage and MainReactPackage
                 return Arrays.<ReactPackage>asList(
                         new DarkModePackage(),
-                        new SafeAreaContextPackage()
+                        new SafeAreaContextPackage(),
+                        new ReactNativeFirebaseAppPackage(),
+                        new ReactNativeFirebaseAuthPackage(),
+                        new ReactNativeFirebaseFirestorePackage(),
+                        new ReactNativeFirebaseStoragePackage(),
+                        new FBSDKPackage(),
+                        new PickerPackage()
                 );
             }
 

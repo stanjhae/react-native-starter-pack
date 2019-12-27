@@ -12,7 +12,6 @@ import TouchableOpacity from 'components/ToucbableOpacity/TouchableOpacity';
 interface ChooseAuthButtonProps {
   name: string;
   onPress: any;
-  screenToPush: string;
 }
 
 const ChooseAuthButton: FC<ChooseAuthButtonProps> = ({ name, onPress }) => {

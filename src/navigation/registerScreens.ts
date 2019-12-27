@@ -1,30 +1,37 @@
 import { Navigation } from 'react-native-navigation';
 import ChooseAuthScreen from 'screens/ChooseAuth/ChooseAuth.Screen';
 import LogInScreen from 'screens/LogIn/LogIn.Screen';
-import SigUpScreen from 'screens/SignUp/SignUp.Screen';
+import SignUpScreen from 'screens/SignUp/SignUp.Screen';
 import ComponentProvider from 'components/ComponentProvider/ComponentProvider';
-import AuthLoadingScreen from 'screens/AuthLoading/AuthLoadingScreen';
+import AuthLoadingScreen from 'screens/AuthLoading/AuthLoading.Screen';
+import ProfileScreen from 'screens/Profile/Profile.Screen';
+import withRematch from 'store/withRematch';
 
 const registerScreens = () => {
   Navigation.registerComponent(
     'AuthLoadingScreen',
-    () => ComponentProvider(AuthLoadingScreen),
+    () => withRematch(ComponentProvider(AuthLoadingScreen)),
     () => LogInScreen,
   );
   Navigation.registerComponent(
     'ChooseAuthScreen',
-    () => ComponentProvider(ChooseAuthScreen),
+    () => withRematch(ComponentProvider(ChooseAuthScreen)),
     () => ChooseAuthScreen,
   );
   Navigation.registerComponent(
     'LogInScreen',
-    () => ComponentProvider(LogInScreen),
+    () => withRematch(ComponentProvider(LogInScreen)),
     () => LogInScreen,
   );
   Navigation.registerComponent(
     'SignUpScreen',
-    () => ComponentProvider(SigUpScreen),
-    () => LogInScreen,
+    () => withRematch(ComponentProvider(SignUpScreen)),
+    () => SignUpScreen,
+  );
+  Navigation.registerComponent(
+    'ProfileScreen',
+    () => withRematch(ComponentProvider(ProfileScreen)),
+    () => ProfileScreen,
   );
 };
 

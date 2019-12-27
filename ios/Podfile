@@ -36,6 +36,11 @@ target 'uptown' do
 
   pod 'ReactNativeDarkMode', :path => '../node_modules/react-native-dark-mode'
 
+  pod 'Firebase/Analytics'
+
+
+  pod 'RNImageCropPicker', :path => '../node_modules/react-native-image-crop-picker'
+
   target 'uptownTests' do
     inherit! :search_paths
     # Pods for testing
