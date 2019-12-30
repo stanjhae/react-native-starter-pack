@@ -48,6 +48,9 @@ target 'uptown' do
 
 
   pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
+  pod 'react-native-blur', :path => '../node_modules/@react-native-community/blur'
+
   target 'uptownTests' do
     inherit! :search_paths
     # Pods for testing

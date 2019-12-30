@@ -9,6 +9,9 @@ export default {
       password: 'Password',
       firstName: 'First name',
       lastName: 'Last name',
+      vendors: 'Vendors',
+      explore: 'Explore',
+      profile: 'Profile',
     },
     chooseAuthScreen: {
       dontHaveAnAccount: "Don't have an account?",

@@ -24,6 +24,8 @@ import io.invertase.firebase.firestore.ReactNativeFirebaseFirestorePackage;
 import io.invertase.firebase.storage.ReactNativeFirebaseStoragePackage;
 
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
+
 import java.util.List;
 import java.util.Arrays;
 
@@ -58,7 +60,9 @@ public class MainApplication extends NavigationApplication {
                         new ReactNativeFirebaseFirestorePackage(),
                         new ReactNativeFirebaseStoragePackage(),
                         new FBSDKPackage(),
-                        new PickerPackage()
+                        new PickerPackage(),
+                        new RNReactNativeHapticFeedbackPackage(),
+                        new SplashScreenReactPackage()
                 );
             }
 

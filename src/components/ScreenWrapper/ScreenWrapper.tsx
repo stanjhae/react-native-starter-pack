@@ -14,7 +14,9 @@ interface ScreenWrapperProps {
 const ScreenWrapper: FC<ScreenWrapperProps> = ({ children, style }) => {
   const styles = useDynamicStyleSheet(ScreenWrapperStyles);
   return (
-    <SafeAreaView style={[styles.container, { ...(style as object) }]}>
+    <SafeAreaView
+      forceInset={{ top: 'never', bottom: 'always' }}
+      style={[styles.container, { ...(style as object) }]}>
       {children}
     </SafeAreaView>
   );

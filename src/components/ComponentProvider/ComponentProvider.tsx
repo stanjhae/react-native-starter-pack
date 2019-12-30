@@ -1,7 +1,8 @@
 import { DarkModeProvider as DP } from 'react-native-dark-mode';
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
 
 const ComponentProvider = (Component: any) => (props: any) => (
   <DP>

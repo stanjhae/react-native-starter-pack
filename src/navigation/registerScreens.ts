@@ -7,6 +7,9 @@ import AuthLoadingScreen from 'screens/AuthLoading/AuthLoading.Screen';
 import ProfileScreen from 'screens/Profile/Profile.Screen';
 import withRematch from 'store/withRematch';
 import ForgotPasswordScreen from 'screens/ForgotPassword/ForgotPassword.Screen';
+import VendorsScreen from 'screens/Vendors/Vendors.Screen';
+import HomeScreen from 'screens/Home/Home.Screen';
+import MoreScreen from 'screens/More/More.Screen';
 
 const registerScreens = () => {
   Navigation.registerComponent(
@@ -38,6 +41,21 @@ const registerScreens = () => {
     'ForgotPasswordScreen',
     () => withRematch(ComponentProvider(ForgotPasswordScreen)),
     () => ForgotPasswordScreen,
+  );
+  Navigation.registerComponent(
+    'HomeScreen',
+    () => ComponentProvider(HomeScreen),
+    () => HomeScreen,
+  );
+  Navigation.registerComponent(
+    'VendorsScreen',
+    () => ComponentProvider(VendorsScreen),
+    () => VendorsScreen,
+  );
+  Navigation.registerComponent(
+    'MoreScreen',
+    () => ComponentProvider(MoreScreen),
+    () => MoreScreen,
   );
 };
 

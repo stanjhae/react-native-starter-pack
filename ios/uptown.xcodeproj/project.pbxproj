@@ -20,8 +20,8 @@
 		2DCD954D1E0B4F2C00145EB5 /* uptownTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* uptownTests.m */; };
 		43F888669B34305623A31704 /* libPods-uptown-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A145B7762DC0201F554603 /* libPods-uptown-tvOS.a */; };
 		48A9567723B2835500B32429 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48A9567623B2835500B32429 /* GoogleService-Info.plist */; };
-		48EEB91B23BA043900BF500A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48EEB91A23BA043800BF500A /* Default-568h@2x.png */; };
 		6AAB08DCF0411656D3957A0E /* libPods-uptownTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 476CB6A2C74CA74EAC909696 /* libPods-uptownTests.a */; };
+		6C562E9423BA43C800217828 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C562E9323BA43C800217828 /* File.swift */; };
 		75531ED5F2E444E3B50970E1 /* AirbnbCereal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6AA33C09728A4E46BE0B7657 /* AirbnbCereal-Light.ttf */; };
 		861D7F2129654D2E866E2584 /* AirbnbCereal-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9071E549F3DA448CA40F4712 /* AirbnbCereal-Bold.ttf */; };
 		96BD8317E8C83850F755F9AC /* libPods-uptown-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ED97159D71FCA39E3104B6B /* libPods-uptown-tvOSTests.a */; };
@@ -71,10 +71,11 @@
 		450E5C4CD7C47EC4BD3E5628 /* Pods-uptown-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uptown-tvOS.release.xcconfig"; path = "Target Support Files/Pods-uptown-tvOS/Pods-uptown-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		476CB6A2C74CA74EAC909696 /* libPods-uptownTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-uptownTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48A9567623B2835500B32429 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		48EEB91A23BA043800BF500A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		497A548114733090F075620D /* Pods-uptown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uptown.release.xcconfig"; path = "Target Support Files/Pods-uptown/Pods-uptown.release.xcconfig"; sourceTree = "<group>"; };
 		64BAF9A7AC7C31AAE5580057 /* Pods-uptown-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uptown-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-uptown-tvOSTests/Pods-uptown-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		6AA33C09728A4E46BE0B7657 /* AirbnbCereal-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AirbnbCereal-Light.ttf"; path = "../assets/AirbnbCereal-Light.ttf"; sourceTree = "<group>"; };
+		6C562E9223BA43C800217828 /* uptown-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "uptown-Bridging-Header.h"; sourceTree = "<group>"; };
+		6C562E9323BA43C800217828 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		6EDA5A58FB709DBDA52CF67B /* Pods-uptown-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uptown-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-uptown-tvOSTests/Pods-uptown-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8BAED9FB7D4EC97E76EC59D6 /* Pods-uptownTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uptownTests.debug.xcconfig"; path = "Target Support Files/Pods-uptownTests/Pods-uptownTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9071E549F3DA448CA40F4712 /* AirbnbCereal-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AirbnbCereal-Bold.ttf"; path = "../assets/AirbnbCereal-Bold.ttf"; sourceTree = "<group>"; };
@@ -190,7 +191,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				48EEB91A23BA043800BF500A /* Default-568h@2x.png */,
+				6C562E9323BA43C800217828 /* File.swift */,
 				48A9567623B2835500B32429 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* uptown */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -199,6 +200,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				1843D626C4F402020C496305 /* Pods */,
 				DF87E8439271400FBE18079A /* Resources */,
+				6C562E9223BA43C800217828 /* uptown-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -328,6 +330,7 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = 633C5ZZM9U;
+						LastSwiftMigration = 1130;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -377,7 +380,6 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				48A9567723B2835500B32429 /* GoogleService-Info.plist in Resources */,
-				48EEB91B23BA043900BF500A /* Default-568h@2x.png in Resources */,
 				CF74CE0DCDE8487FBAF2D7AB /* AirbnbCereal-Black.ttf in Resources */,
 				861D7F2129654D2E866E2584 /* AirbnbCereal-Bold.ttf in Resources */,
 				155694089A37433387DEA8D5 /* AirbnbCereal-Book.ttf in Resources */,
@@ -609,6 +611,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				6C562E9423BA43C800217828 /* File.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -662,6 +665,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8BAED9FB7D4EC97E76EC59D6 /* Pods-uptownTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 633C5ZZM9U;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -686,6 +690,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1EA8EB7BB199BA276BEC6434 /* Pods-uptownTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 633C5ZZM9U;
@@ -708,6 +713,7 @@
 			baseConfigurationReference = E7FD083861154F7E0D448501 /* Pods-uptown.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 5;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 633C5ZZM9U;
@@ -720,6 +726,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.debrecen.uptown;
 				PRODUCT_NAME = Uptown;
+				SWIFT_OBJC_BRIDGING_HEADER = "uptown-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -729,6 +738,7 @@
 			baseConfigurationReference = 497A548114733090F075620D /* Pods-uptown.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 633C5ZZM9U;
 				INFOPLIST_FILE = uptown/Info.plist;
@@ -740,6 +750,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.debrecen.uptown;
 				PRODUCT_NAME = Uptown;
+				SWIFT_OBJC_BRIDGING_HEADER = "uptown-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

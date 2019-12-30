@@ -1,13 +1,13 @@
 import React, { FC, useEffect } from 'react';
+import Text from '../../components/Text/Text';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import Text from 'components/Text/Text';
 import { useTranslation } from 'react-i18next';
-import ScreenWrapper from '../../components/ScreenWrapper/ScreenWrapper';
-import OtherText from '../../components/OtherText/OtherText';
+import ScreenWrapper from 'components/ScreenWrapper/ScreenWrapper';
+import OtherText from 'components/OtherText/OtherText';
 import ChooseAuthButton from './ChooseAuth.Button';
-import { pushScreen } from 'navigation/navigation.actions';
 import { connect } from 'react-redux';
 import { Dispatch } from 'store/index';
+import { pushScreen } from 'navigation/navigation.actions';
 import { mainAppColor } from 'constants/colors';
 import SplashScreen from 'react-native-splash-screen';
 
@@ -21,10 +21,7 @@ const ChooseAuthScreen: FC<ReturnType<typeof mapDispatch>> = ({ login }) => {
     pushScreen('ChooseAuthStack', screenToPush, headerTitle);
 
   useEffect(() => {
-    if (Platform.OS === 'ios') {
-      SplashScreen.hide();
-      StatusBar.setHidden(false, 'slide');
-    }
+    SplashScreen.hide();
   });
 
   return (
@@ -34,6 +31,7 @@ const ChooseAuthScreen: FC<ReturnType<typeof mapDispatch>> = ({ login }) => {
           onPress={() => navigate('LogInScreen', 'general.logIn')}
           name="logIn"
         />
+        <ChooseAuthButton onPress={() => null} name="facebook" />
         <ChooseAuthButton onPress={login} name="facebook" />
         <Text onPress={() => navigate('SignUpScreen', 'general.signUp')}>
           {t('chooseAuthScreen.dontHaveAnAccount')}&nbsp;&nbsp;
@@ -50,6 +48,11 @@ const ChooseAuthScreenStyles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
     paddingBottom: 15,
+  },
+  absolute: {
+    position: 'absolute',
+    height: 84,
+    width: '100%',
   },
 });
 

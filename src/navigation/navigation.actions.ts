@@ -33,6 +33,10 @@ export const popScreen = (stackToPopFrom: string) => {
   Navigation.pop(stackToPopFrom);
 };
 
+export const dismissModal = (componentToDismiss: string) => {
+  Navigation.dismissModal(componentToDismiss);
+};
+
 export const showModal = (
   stackName: string,
   screenName: string,
@@ -71,7 +75,3 @@ export const showModal = (
       ],
     },
   });
-
-export const dismissModal = (stack: string) => {
-  Navigation.dismissModal(stack).then(null);
-};

@@ -9,6 +9,8 @@ import { boldFont } from 'constants/constants';
 import BottomButton from 'components/BottomButton/BottomButton';
 import Haptic from 'utils/Haptic';
 import SafeAreaView from 'react-native-safe-area-view';
+import TopBar from 'components/TopBar/TopBar';
+import { dismissModal } from 'navigation/navigation.actions';
 import { connect } from 'react-redux';
 import { Dispatch } from 'store/index';
 import { useForm } from 'react-hook-form';
@@ -20,6 +22,7 @@ const mapDispatch = (dispatch: Dispatch) => ({
 
 interface ForgotPasswordScreenProps {
   email?: string;
+  currentStack: string;
 }
 //TODO: Handle initial validation
 const ForgotPasswordScreen: FC<ForgotPasswordScreenProps &
@@ -53,13 +56,19 @@ const ForgotPasswordScreen: FC<ForgotPasswordScreenProps &
 
   const { t } = useTranslation();
 
-  const onPressReset = (values: any) => {
+  const onPressReset = () => {
     Haptic.error();
-    forgotPassword(values.email).then(null);
+    // forgotPassword(values.email).then(null);
   };
 
   return (
     <ScreenWrapper>
+      <TopBar
+        currentStack={''}
+        leftIconSize={18}
+        modal
+        title="general.forgotPassword"
+      />
       <KeyboardAvoidingView>
         <SafeAreaView style={{ flex: 1 }}>
           <ScrollView>

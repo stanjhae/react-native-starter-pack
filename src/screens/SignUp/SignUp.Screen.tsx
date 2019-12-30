@@ -10,6 +10,11 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'store/index';
 import { useForm } from 'react-hook-form';
 import { signUpSchema } from 'utils/validationSchema';
+import TopBar from 'components/TopBar/TopBar';
+
+interface SignUpScreenProps {
+  currentStack: string;
+}
 
 const mapDispatch = (dispatch: Dispatch) => ({
   signUp: (payload: any) => dispatch.users.signUp(payload),
@@ -93,6 +98,7 @@ const SignUpScreen: FC<ReturnType<typeof mapDispatch>> = ({ signUp }) => {
   //TODO: Combine login and sign up forms
   return (
     <ScreenWrapper>
+      <TopBar currentStack={currentStack} title="general.signUp" />
       <KeyboardAvoidingView>
         <ScrollView>
           <TextInput

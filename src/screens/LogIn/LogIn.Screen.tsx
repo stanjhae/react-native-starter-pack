@@ -15,6 +15,15 @@ import { showForgotPasswordModal } from './Login.functions';
 import BottomButton from 'components/BottomButton/BottomButton';
 import { mainAppColor } from 'constants/colors';
 import Haptic from 'utils/Haptic';
+import goToMainApp from 'utils/goToMainApp';
+import TopBar from 'components/TopBar/TopBar';
+import SplashScreen from 'react-native-splash-screen';
+import { BlurView } from '@react-native-community/blur';
+import { View } from 'react-native';
+
+interface LogInScreenProps {
+  currentStack: string;
+}
 
 const mapDispatch = (dispatch: Dispatch) => ({
   login: (payload: any) => dispatch.users.login(payload),
@@ -40,6 +49,10 @@ const LogInScreen: FC<ReturnType<typeof mapDispatch>> = ({ login }) => {
   const goToForgotPassword = () => {
     showForgotPasswordModal({ email: getValues().email });
   };
+
+  useEffect(() => {
+    SplashScreen.hide();
+  });
 
   useEffect(() => {
     register('email');
@@ -71,11 +84,17 @@ const LogInScreen: FC<ReturnType<typeof mapDispatch>> = ({ login }) => {
 
   const handleLogin = (values: any) => {
     Haptic.error();
+    goToMainApp();
     login(values).then(null);
   };
 
   return (
     <ScreenWrapper>
+      <TopBar
+        currentStack={currentStack}
+        leftIconSize={19}
+        title="general.logIn"
+      />
       <KeyboardAvoidingView>
         <ScrollView>
           <TextInput

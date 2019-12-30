@@ -9,11 +9,21 @@ const error = () => {
   ReactNativeHapticFeedback.trigger('notificationError', options);
 };
 
+const impactMedium = () => {
+  ReactNativeHapticFeedback.trigger('impactMedium', options);
+};
+
+const impactHeavy = () => {
+  ReactNativeHapticFeedback.trigger('impactHeavy', options);
+};
+
 const success = () => {
   ReactNativeHapticFeedback.trigger('notificationSuccess', options);
 };
 
 export default {
+  impactHeavy,
+  impactMedium,
   error,
   success,
 };
