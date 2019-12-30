@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.mkuczera.RNReactNativeHapticFeedbackPackage;
+import com.BV.LinearGradient.LinearGradientPackage;
 import com.reactnative.ivpusic.imagepicker.PickerPackage;
 import com.codemotionapps.reactnativedarkmode.DarkModePackage;
 import com.facebook.react.ReactNativeHost;
@@ -47,6 +49,8 @@ public class MainApplication extends NavigationApplication {
                 // Add additional packages you require here
                 // No need to add RnnPackage and MainReactPackage
                 return Arrays.<ReactPackage>asList(
+                        new LinearGradientPackage(),
+                        new RNReactNativeHapticFeedbackPackage(),
                         new DarkModePackage(),
                         new SafeAreaContextPackage(),
                         new ReactNativeFirebaseAppPackage(),

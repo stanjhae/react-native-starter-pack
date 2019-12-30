@@ -20,6 +20,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* uptownTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* uptownTests.m */; };
 		43F888669B34305623A31704 /* libPods-uptown-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A145B7762DC0201F554603 /* libPods-uptown-tvOS.a */; };
 		48A9567723B2835500B32429 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48A9567623B2835500B32429 /* GoogleService-Info.plist */; };
+		48EEB91B23BA043900BF500A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48EEB91A23BA043800BF500A /* Default-568h@2x.png */; };
 		6AAB08DCF0411656D3957A0E /* libPods-uptownTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 476CB6A2C74CA74EAC909696 /* libPods-uptownTests.a */; };
 		75531ED5F2E444E3B50970E1 /* AirbnbCereal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6AA33C09728A4E46BE0B7657 /* AirbnbCereal-Light.ttf */; };
 		861D7F2129654D2E866E2584 /* AirbnbCereal-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9071E549F3DA448CA40F4712 /* AirbnbCereal-Bold.ttf */; };
@@ -70,6 +71,7 @@
 		450E5C4CD7C47EC4BD3E5628 /* Pods-uptown-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uptown-tvOS.release.xcconfig"; path = "Target Support Files/Pods-uptown-tvOS/Pods-uptown-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		476CB6A2C74CA74EAC909696 /* libPods-uptownTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-uptownTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48A9567623B2835500B32429 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		48EEB91A23BA043800BF500A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		497A548114733090F075620D /* Pods-uptown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uptown.release.xcconfig"; path = "Target Support Files/Pods-uptown/Pods-uptown.release.xcconfig"; sourceTree = "<group>"; };
 		64BAF9A7AC7C31AAE5580057 /* Pods-uptown-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uptown-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-uptown-tvOSTests/Pods-uptown-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		6AA33C09728A4E46BE0B7657 /* AirbnbCereal-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AirbnbCereal-Light.ttf"; path = "../assets/AirbnbCereal-Light.ttf"; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				48EEB91A23BA043800BF500A /* Default-568h@2x.png */,
 				48A9567623B2835500B32429 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* uptown */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -374,6 +377,7 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				48A9567723B2835500B32429 /* GoogleService-Info.plist in Resources */,
+				48EEB91B23BA043900BF500A /* Default-568h@2x.png in Resources */,
 				CF74CE0DCDE8487FBAF2D7AB /* AirbnbCereal-Black.ttf in Resources */,
 				861D7F2129654D2E866E2584 /* AirbnbCereal-Bold.ttf in Resources */,
 				155694089A37433387DEA8D5 /* AirbnbCereal-Book.ttf in Resources */,

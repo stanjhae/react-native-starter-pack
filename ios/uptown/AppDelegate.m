@@ -5,6 +5,7 @@
 #import <ReactNativeNavigation/ReactNativeNavigation.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <React/RCTLinkingManager.h>
+#import "RNSplashScreen.h"
 
 @import Firebase;
 @implementation AppDelegate
@@ -14,6 +15,7 @@
     NSURL *jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
     [ReactNativeNavigation bootstrap:jsCodeLocation launchOptions:launchOptions];
 
+  [RNSplashScreen show];
   if ([FIRApp defaultApp] == nil) {
     [FIRApp configure];
   }

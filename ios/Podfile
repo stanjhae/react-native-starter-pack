@@ -40,7 +40,14 @@ target 'uptown' do
 
 
   pod 'RNImageCropPicker', :path => '../node_modules/react-native-image-crop-picker'
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
 
+
+  pod 'RNReactNativeHapticFeedback', :path => '../node_modules/react-native-haptic-feedback'
+  pod 'RNImageCropPicker', :path => '../node_modules/react-native-image-crop-picker'
+
+
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
   target 'uptownTests' do
     inherit! :search_paths
     # Pods for testing
