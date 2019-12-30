@@ -7,7 +7,7 @@ import {
   authenticateWithPassword,
   firebaseImageUpload,
 } from 'store/helpers';
-import { pushScreen } from 'navigation/navigation.actions';
+import { dismissModal, pushScreen } from 'navigation/navigation.actions';
 import { Alert } from 'react-native';
 import storage from '@react-native-firebase/storage';
 
@@ -63,6 +63,9 @@ const model = {
               });
               pushScreen('ChooseAuthStack', 'ProfileScreen');
             });
+        })
+        .catch(error => {
+          Alert.alert('An error has occured', error.code);
         });
     },
     login: ({ email, password }: any) => {
@@ -95,8 +98,15 @@ const model = {
     // },
     forgotPassword: (email: string) => {
       //TODO: handle re authentication after password update
-      auth().sendPasswordResetEmail(email);
-      Alert.alert('Password reset link has been sent to your email');
+      auth()
+        .sendPasswordResetEmail(email)
+        .then(() => {
+          dismissModal('ForgotPasswordModal');
+          Alert.alert('Password reset link has been sent to your email');
+        })
+        .catch(error => {
+          Alert.alert('An error has occurred', error.code);
+        });
     },
     updateUser: (payload: any) => {
       firestore()

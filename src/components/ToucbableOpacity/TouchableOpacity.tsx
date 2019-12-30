@@ -3,7 +3,7 @@ import { StyleProp, TouchableOpacity as TO, ViewStyle } from 'react-native';
 
 interface TouchableOpacityProps {
   onPress: any;
-  style: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
 }
 
 const TouchableOpacity: FC<TouchableOpacityProps> = ({

@@ -1,17 +1,29 @@
-import React, { FC, useCallback, useEffect } from 'react';
+import React, { FC, useCallback, useEffect, useRef } from 'react';
 import ScreenWrapper from 'components/ScreenWrapper/ScreenWrapper';
 import Text from 'components/Text/Text';
-import { Button, ScrollView, TextInput } from 'react-native';
 import { connect } from 'react-redux';
 import { Dispatch } from 'store/index';
 import { useForm } from 'react-hook-form';
 import { loginSchema } from 'utils/validationSchema';
+import TextInput from 'components/TextInput/TextInput';
+import KeyboardAvoidingView from 'components/KeyboardAvoidingView/KeyboardAvoidingView';
+import ScrollView from 'components/ScrollView/ScrollView';
+import OtherText from 'components/OtherText/OtherText';
+import { mediumFont } from 'constants/constants';
+import { useTranslation } from 'react-i18next';
+import { showForgotPasswordModal } from './Login.functions';
+import BottomButton from 'components/BottomButton/BottomButton';
+import { mainAppColor } from 'constants/colors';
+import Haptic from 'utils/Haptic';
 
 const mapDispatch = (dispatch: Dispatch) => ({
   login: (payload: any) => dispatch.users.login(payload),
 });
 
 const LogInScreen: FC<ReturnType<typeof mapDispatch>> = ({ login }) => {
+  const secondInput = useRef(null);
+  const { t } = useTranslation();
+
   const {
     register,
     handleSubmit,
@@ -19,9 +31,15 @@ const LogInScreen: FC<ReturnType<typeof mapDispatch>> = ({ login }) => {
     triggerValidation,
     errors,
     formState,
+    getValues,
   } = useForm({
+    mode: 'onBlur',
     validationSchema: loginSchema,
   });
+
+  const goToForgotPassword = () => {
+    showForgotPasswordModal({ email: getValues().email });
+  };
 
   useEffect(() => {
     register('email');
@@ -51,32 +69,57 @@ const LogInScreen: FC<ReturnType<typeof mapDispatch>> = ({ login }) => {
     triggerValidation('password').then(null);
   }, [triggerValidation]);
 
-  //TODO: Declare type
   const handleLogin = (values: any) => {
+    Haptic.error();
     login(values).then(null);
   };
 
-  //TODO: Combine login and sign up forms
   return (
     <ScreenWrapper>
-      <ScrollView>
-        <Text>LoginScreen</Text>
-        <TextInput
-          placeholder={'Email'}
-          onChangeText={setEmail}
-          onBlur={handleEmailValidation}
-        />
-        {errors.email && <Text>{errors.email.message}</Text>}
-        <TextInput
-          placeholder={'Password'}
-          onChangeText={setPassword}
-          onBlur={handlePasswordValidation}
-        />
-        {errors.password && <Text>{errors.password.message}</Text>}
-        {formState.dirty && (
-          <Button title={'Login'} onPress={handleSubmit(handleLogin)} />
-        )}
-      </ScrollView>
+      <KeyboardAvoidingView>
+        <ScrollView>
+          <TextInput
+            returnKeyType="next"
+            blurOnSubmit={false}
+            style={{ marginTop: 30 }}
+            autoCorrect={false}
+            autoCapitalize="none"
+            textContentType="emailAddress"
+            keyboardType="email-address"
+            autoCompleteType="email"
+            placeholder="general.emailAddress"
+            onChangeText={setEmail}
+            onBlur={handleEmailValidation}
+            onSubmitEditing={() => secondInput.current?.focus()}
+          />
+          {errors.email && <Text>{errors.email.message}</Text>}
+          <TextInput
+            ref={secondInput}
+            autoCorrect={false}
+            secureTextEntry
+            autoCapitalize="none"
+            textContentType="password"
+            keyboardType="default"
+            autoCompleteType="password"
+            placeholder="general.password"
+            onChangeText={setPassword}
+            onBlur={handlePasswordValidation}
+          />
+          {errors.password && <Text>{errors.password.message}</Text>}
+          <OtherText
+            style={{ textAlign: 'center', fontFamily: mediumFont }}
+            onPress={goToForgotPassword}
+            color={mainAppColor}>
+            {t('general.forgotPassword')}?
+          </OtherText>
+          {formState.isValid && (
+            <BottomButton
+              onPress={handleSubmit(handleLogin)}
+              buttonName={t('general.logIn')}
+            />
+          )}
+        </ScrollView>
+      </KeyboardAvoidingView>
     </ScreenWrapper>
   );
 };

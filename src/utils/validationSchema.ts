@@ -26,6 +26,14 @@ export const loginSchema = yup.object().shape({
   password: yup.string().required(),
 });
 
+export const forgotPasswordSchema = yup.object().shape({
+  email: yup
+    .string()
+    .trim()
+    .email('Email must be a valid email')
+    .required(),
+});
+
 export const profileSchema = yup.object().shape({
   firstName: yup
     .string()
