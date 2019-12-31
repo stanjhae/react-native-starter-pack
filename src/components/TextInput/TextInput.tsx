@@ -15,6 +15,8 @@ import constants, {
 } from '../../constants/constants';
 import { useDarkModeContext } from 'react-native-dark-mode';
 import { useTranslation } from 'react-i18next';
+import { errorColor } from 'constants/colors';
+import OtherText from 'components/OtherText/OtherText';
 
 interface TextInputProps {
   onChangeText: (text: string) => void;
@@ -35,6 +37,7 @@ interface TextInputProps {
   blurOnSubmit?: boolean;
   returnKeyType?: ReturnKeyTypeOptions;
   defaultValue?: string;
+  error?: string;
 }
 
 const color = {
@@ -60,39 +63,47 @@ const TextInput: FC<TextInputProps> = forwardRef(
       style,
       returnKeyType,
       defaultValue,
+      error,
     },
     ref,
   ) => {
     const { t } = useTranslation();
     const mode = useDarkModeContext();
     return (
-      <Input
-        ref={ref}
-        defaultValue={defaultValue}
-        returnKeyType={returnKeyType}
-        blurOnSubmit={blurOnSubmit}
-        onSubmitEditing={onSubmitEditing}
-        autoCorrect={autoCorrect}
-        autoCapitalize={autoCapitalize}
-        secureTextEntry={secureTextEntry}
-        textContentType={textContentType}
-        autoFocus={autoFocus}
-        keyboardType={keyboardType}
-        autoCompleteType={autoCompleteType}
-        onBlur={onBlur}
-        placeholderTextColor="#999"
-        placeholder={t(placeholder)}
-        clearButtonMode="always"
-        style={[
-          styles.container,
-          {
-            color: color[mode],
-            borderBottomColor: color[mode],
-            ...(style as object),
-          },
-        ]}
-        onChangeText={text => onChangeText(text)}
-      />
+      <>
+        <Input
+          ref={ref}
+          defaultValue={defaultValue}
+          returnKeyType={returnKeyType}
+          blurOnSubmit={blurOnSubmit}
+          onSubmitEditing={onSubmitEditing}
+          autoCorrect={autoCorrect}
+          autoCapitalize={autoCapitalize}
+          secureTextEntry={secureTextEntry}
+          textContentType={textContentType}
+          autoFocus={autoFocus}
+          keyboardType={keyboardType}
+          autoCompleteType={autoCompleteType}
+          onBlur={onBlur}
+          placeholderTextColor="#999"
+          placeholder={t(placeholder)}
+          clearButtonMode="always"
+          style={[
+            styles.textInput,
+            {
+              borderBottomWidth: error ? 1 : borderBottomWidth,
+              color: color[mode],
+              marginBottom: error ? 10 : 30,
+              borderBottomColor: error ? errorColor : color[mode],
+              ...(style as object),
+            },
+          ]}
+          onChangeText={text => onChangeText(text)}
+        />
+        {error ? (
+          <OtherText style={styles.errorText}>{t(error)}</OtherText>
+        ) : null}
+      </>
     );
   },
 );
@@ -106,12 +117,15 @@ TextInput.defaultProps = {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  textInput: {
     fontFamily: mediumFont,
-    marginBottom: 30,
     paddingVertical: 10,
-    borderBottomWidth,
     width: constants.width * 0.9,
+  },
+  errorText: {
+    marginBottom: 20,
+    color: errorColor,
+    fontFamily: mediumFont,
   },
 });
 

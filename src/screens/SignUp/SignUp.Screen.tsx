@@ -5,12 +5,12 @@ import ScrollView from 'components/ScrollView/ScrollView';
 import TextInput from 'components/TextInput/TextInput';
 import BottomButton from 'components/BottomButton/BottomButton';
 import { useTranslation } from 'react-i18next';
-import { Text } from 'react-native';
 import { connect } from 'react-redux';
 import { Dispatch } from 'store/index';
 import { useForm } from 'react-hook-form';
 import { signUpSchema } from 'utils/validationSchema';
 import TopBar from 'components/TopBar/TopBar';
+import { invalidForm } from 'utils/utils.functions';
 
 interface SignUpScreenProps {
   currentStack: string;
@@ -20,7 +20,10 @@ const mapDispatch = (dispatch: Dispatch) => ({
   signUp: (payload: any) => dispatch.users.signUp(payload),
 });
 
-const SignUpScreen: FC<ReturnType<typeof mapDispatch>> = ({ signUp }) => {
+const SignUpScreen: FC<SignUpScreenProps & ReturnType<typeof mapDispatch>> = ({
+  signUp,
+  currentStack,
+}) => {
   const secondInput = useRef(null);
   const thirdInput = useRef(null);
   const fourthInput = useRef(null);
@@ -32,18 +35,18 @@ const SignUpScreen: FC<ReturnType<typeof mapDispatch>> = ({ signUp }) => {
     setValue,
     triggerValidation,
     errors,
-    formState,
   } = useForm({
     mode: 'onBlur',
     validationSchema: signUpSchema,
   });
 
   useEffect(() => {
+    invalidForm(errors);
     register('firstName');
     register('lastName');
     register('email');
     register('password');
-  }, [register]);
+  }, [errors, register]);
 
   //TODO: Improve implementation
   const setFirstName = useCallback(
@@ -112,10 +115,9 @@ const SignUpScreen: FC<ReturnType<typeof mapDispatch>> = ({ signUp }) => {
             placeholder="general.firstName"
             onChangeText={setFirstName}
             onBlur={handleFirstNameValidation}
+            error={errors.firstName?.message}
             // @ts-ignore
-            onSubmitEditing={() => secondInput.current.focus()}
           />
-          {errors.firstName && <Text>{errors.firstName.message}</Text>}
           <TextInput
             ref={secondInput}
             returnKeyType="next"
@@ -127,10 +129,10 @@ const SignUpScreen: FC<ReturnType<typeof mapDispatch>> = ({ signUp }) => {
             placeholder="general.lastName"
             onChangeText={setLastName}
             onBlur={handleLastNameValidation}
+            error={errors.lastName?.message}
             // @ts-ignore
             onSubmitEditing={() => thirdInput.current.focus()}
           />
-          {errors.lastName && <Text>{errors.lastName.message}</Text>}
           <TextInput
             ref={thirdInput}
             returnKeyType="next"
@@ -143,14 +145,12 @@ const SignUpScreen: FC<ReturnType<typeof mapDispatch>> = ({ signUp }) => {
             placeholder="general.emailAddress"
             onChangeText={setEmail}
             onBlur={handleEmailValidation}
+            error={errors.email?.message}
             // @ts-ignore
             onSubmitEditing={() => fourthInput.current.focus()}
           />
-          {errors.email && <Text>{errors.email.message}</Text>}
           <TextInput
-            // @ts-ignore
             ref={fourthInput}
-            blurOnSubmit={false}
             autoCorrect={false}
             secureTextEntry
             autoCapitalize="none"
@@ -159,15 +159,13 @@ const SignUpScreen: FC<ReturnType<typeof mapDispatch>> = ({ signUp }) => {
             autoCompleteType="password"
             placeholder="general.password"
             onChangeText={setPassword}
+            error={errors.password?.message}
             onBlur={handlePasswordValidation}
           />
-          {errors.password && <Text>{errors.password.message}</Text>}
-          {formState.isValid && (
-            <BottomButton
-              onPress={handleSubmit(handleSignUp)}
-              buttonName={t('general.signUp')}
-            />
-          )}
+          <BottomButton
+            onPress={handleSubmit(handleSignUp)}
+            buttonName={t('general.signUp')}
+          />
         </ScrollView>
       </KeyboardAvoidingView>
     </ScreenWrapper>

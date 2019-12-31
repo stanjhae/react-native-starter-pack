@@ -12,7 +12,6 @@ const ScrollView: FC<ScrollViewProps> = ({ style, children, ...props }) => {
       {...props}
       style={{ paddingHorizontal: 20, ...(style as object) }}
       keyboardShouldPersistTaps="handled"
-      keyboardDismissMode="interactive"
       contentInsetAdjustmentBehavior="never">
       {children}
     </SV>

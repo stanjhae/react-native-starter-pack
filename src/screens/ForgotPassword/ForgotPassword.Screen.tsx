@@ -7,14 +7,13 @@ import Text from 'components/Text/Text';
 import { useTranslation } from 'react-i18next';
 import { boldFont } from 'constants/constants';
 import BottomButton from 'components/BottomButton/BottomButton';
-import Haptic from 'utils/Haptic';
 import SafeAreaView from 'react-native-safe-area-view';
 import TopBar from 'components/TopBar/TopBar';
-import { dismissModal } from 'navigation/navigation.actions';
 import { connect } from 'react-redux';
 import { Dispatch } from 'store/index';
 import { useForm } from 'react-hook-form';
 import { forgotPasswordSchema } from 'utils/validationSchema';
+import { invalidForm } from 'utils/utils.functions';
 
 const mapDispatch = (dispatch: Dispatch) => ({
   forgotPassword: (email: string) => dispatch.users.forgotPassword(email),
@@ -26,13 +25,16 @@ interface ForgotPasswordScreenProps {
 }
 //TODO: Handle initial validation
 const ForgotPasswordScreen: FC<ForgotPasswordScreenProps &
-  ReturnType<typeof mapDispatch>> = ({ email, forgotPassword }) => {
+  ReturnType<typeof mapDispatch>> = ({
+  email,
+  currentStack,
+  forgotPassword,
+}) => {
   const {
     register,
     handleSubmit,
     setValue,
     errors,
-    formState,
     triggerValidation,
   } = useForm({
     mode: 'onBlur',
@@ -40,8 +42,9 @@ const ForgotPasswordScreen: FC<ForgotPasswordScreenProps &
   });
 
   useEffect(() => {
+    invalidForm(errors);
     register('email');
-  }, [register]);
+  }, [errors, register]);
 
   const setEmail = useCallback(
     value => {
@@ -56,15 +59,14 @@ const ForgotPasswordScreen: FC<ForgotPasswordScreenProps &
 
   const { t } = useTranslation();
 
-  const onPressReset = () => {
-    Haptic.error();
-    // forgotPassword(values.email).then(null);
+  const onPressReset = (values: any) => {
+    forgotPassword(values.email).then(null);
   };
 
   return (
     <ScreenWrapper>
       <TopBar
-        currentStack={''}
+        currentStack={currentStack}
         leftIconSize={18}
         modal
         title="general.forgotPassword"
@@ -91,15 +93,12 @@ const ForgotPasswordScreen: FC<ForgotPasswordScreenProps &
               placeholder="general.emailAddress"
               onBlur={handleEmailValidation}
               onChangeText={setEmail}
+              error={errors.email?.message}
             />
-            {errors.email && <Text>{errors.email.message}</Text>}
-
-            {formState.isValid && (
-              <BottomButton
-                buttonName="Reset"
-                onPress={handleSubmit(onPressReset)}
-              />
-            )}
+            <BottomButton
+              buttonName="Reset"
+              onPress={handleSubmit(onPressReset)}
+            />
           </ScrollView>
         </SafeAreaView>
       </KeyboardAvoidingView>

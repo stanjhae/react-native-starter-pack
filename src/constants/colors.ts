@@ -1,4 +1,5 @@
 export const mainAppColor = '#00a3ff';
+export const errorColor = '#D83900';
 
 export const layoutColors = {
   light: 'white',

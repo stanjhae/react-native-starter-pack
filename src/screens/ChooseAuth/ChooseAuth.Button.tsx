@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useDarkModeContext } from 'react-native-dark-mode';
 import constants, { boldFont } from 'constants/constants.ts';
 import Text from 'components/Text/Text';
@@ -13,6 +13,7 @@ interface ChooseAuthButtonProps {
 }
 
 const ChooseAuthButton: FC<ChooseAuthButtonProps> = ({ name, onPress }) => {
+  useEffect(() => {}, []);
   const { t } = useTranslation();
   const currentMode = useDarkModeContext();
   return (

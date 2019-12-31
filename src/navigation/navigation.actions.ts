@@ -10,15 +10,6 @@ export const pushScreen = (
 ) => {
   Navigation.push(stackToPushTo, {
     component: {
-      options: {
-        topBar: {
-          title: {
-            text: i18next.t(headerTitle),
-            fontSize: 15,
-            fontFamily: mediumFont,
-          },
-        },
-      },
       id: screenToPush,
       name: screenToPush,
       passProps: {

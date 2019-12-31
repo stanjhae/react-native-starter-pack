@@ -5,33 +5,30 @@ export const signUpSchema = yup.object().shape({
   firstName: yup
     .string()
     .trim()
-    .required(),
-  lastName: yup
-    .string()
-    .trim()
-    .required(),
+    .required('general.firstNameRequired'),
+  lastName: yup.string().trim(),
   email: yup
     .string()
-    .email('Email must be a valid email')
-    .required(),
-  password: yup.string().required(),
+    .email('general.invalidEmail')
+    .required('general.emailRequired'),
+  password: yup.string().required('general.passwordRequired'),
 });
 
 export const loginSchema = yup.object().shape({
   email: yup
     .string()
     .trim()
-    .email('Email must be a valid email')
-    .required(),
-  password: yup.string().required(),
+    .email('general.invalidEmail')
+    .required('general.emailRequired'),
+  password: yup.string().required('general.passwordRequired'),
 });
 
 export const forgotPasswordSchema = yup.object().shape({
   email: yup
     .string()
     .trim()
-    .email('Email must be a valid email')
-    .required(),
+    .email('general.invalidEmail')
+    .required('general.emailRequired'),
 });
 
 export const profileSchema = yup.object().shape({

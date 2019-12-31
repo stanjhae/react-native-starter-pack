@@ -12,6 +12,10 @@ export default {
       vendors: 'Vendors',
       explore: 'Explore',
       profile: 'Profile',
+      invalidEmail: 'Please enter a valid email address',
+      emailRequired: 'Email is required',
+      passwordRequired: 'Password is required',
+      firstNameRequired: 'First name is required',
     },
     chooseAuthScreen: {
       dontHaveAnAccount: "Don't have an account?",

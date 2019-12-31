@@ -12,7 +12,6 @@ export const zapfino = 'ZapfinoExtraLT-One';
 export const baseFontSize = 14;
 export const tabBarScale = 2.3;
 export const borderBottomWidth = Platform.isIOS13() ? 0.2 : 0.3;
-export const errorColor = 'red';
 
 export default {
   width,

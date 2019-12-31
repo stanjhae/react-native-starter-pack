@@ -5,7 +5,6 @@ const TopBarStyles = StyleSheet.create({
   container: {
     borderBottomWidth,
     flexDirection: 'row',
-    height: 44,
     width: constants.width,
   },
   titleContainer: {

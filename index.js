@@ -5,7 +5,6 @@ import { bottomTabConfig, layoutColors, mainAppColor } from 'constants/colors';
 import { eventEmitter, initialMode } from 'react-native-dark-mode';
 import { normalFont } from 'constants/constants';
 import goToMainApp from 'utils/goToMainApp';
-// import statusBarListeners from 'utils/statusBarListeners';
 
 eventEmitter.on('currentModeChanged', newMode => {
   Navigation.mergeOptions('bottomTabs', {
@@ -60,12 +59,7 @@ eventEmitter.on('currentModeChanged', newMode => {
 registerScreens();
 
 Navigation.events().registerAppLaunchedListener(async () => {
-  // statusBarListeners();
   Navigation.setDefaultOptions({
-    statusBar: {
-      blur: true,
-      drawBehind: true,
-    },
     bottomTabs: {
       backgroundColor: bottomTabConfig[initialMode].backgroundColor,
     },

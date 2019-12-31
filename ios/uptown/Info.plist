@@ -20,8 +20,28 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb1445614175607774</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>FacebookAppID</key>
+	<string>1445614175607774</string>
+	<key>FacebookDisplayName</key>
+	<string>Uptown</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -39,8 +59,8 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
-  <key>NSPhotoLibraryUsageDescription</key>
-  <string>We need to access your photo library so you can choose your profile image.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need to access your photo library so you can choose your profile image.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AirbnbCereal-Black.ttf</string>
@@ -49,8 +69,8 @@
 		<string>AirbnbCereal-ExtraBold.ttf</string>
 		<string>AirbnbCereal-Light.ttf</string>
 		<string>AirbnbCereal-Medium.ttf</string>
-    <string>Allura-Regular.otf</string>
-    <string>ZapfinoExtraLT-One.otf</string>
+		<string>Allura-Regular.otf</string>
+		<string>ZapfinoExtraLT-One.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -58,33 +78,13 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIStatusBarHidden</key>
+	<false/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-  <key>CFBundleURLTypes</key>
-  <array>
-    <dict>
-      <key>CFBundleURLSchemes</key>
-      <array>
-        <string>fb1445614175607774</string>
-      </array>
-    </dict>
-  </array>
-  <key>FacebookAppID</key>
-  <string>1445614175607774</string>
-  <key>FacebookDisplayName</key>
-  <string>Uptown</string>
-  <key>LSApplicationQueriesSchemes</key>
-  <array>
-    <string>fbapi</string>
-    <string>fb-messenger-share-api</string>
-    <string>fbauth2</string>
-    <string>fbshareextension</string>
-  </array>
-  <key>UIStatusBarHidden</key>
-  <true/>
 </dict>
 </plist>

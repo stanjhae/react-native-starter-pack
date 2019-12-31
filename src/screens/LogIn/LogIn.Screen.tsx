@@ -1,6 +1,5 @@
 import React, { FC, useCallback, useEffect, useRef } from 'react';
 import ScreenWrapper from 'components/ScreenWrapper/ScreenWrapper';
-import Text from 'components/Text/Text';
 import { connect } from 'react-redux';
 import { Dispatch } from 'store/index';
 import { useForm } from 'react-hook-form';
@@ -14,12 +13,8 @@ import { useTranslation } from 'react-i18next';
 import { showForgotPasswordModal } from './Login.functions';
 import BottomButton from 'components/BottomButton/BottomButton';
 import { mainAppColor } from 'constants/colors';
-import Haptic from 'utils/Haptic';
-import goToMainApp from 'utils/goToMainApp';
 import TopBar from 'components/TopBar/TopBar';
-import SplashScreen from 'react-native-splash-screen';
-import { BlurView } from '@react-native-community/blur';
-import { View } from 'react-native';
+import { invalidForm } from 'utils/utils.functions';
 
 interface LogInScreenProps {
   currentStack: string;
@@ -29,7 +24,10 @@ const mapDispatch = (dispatch: Dispatch) => ({
   login: (payload: any) => dispatch.users.login(payload),
 });
 
-const LogInScreen: FC<ReturnType<typeof mapDispatch>> = ({ login }) => {
+const LogInScreen: FC<LogInScreenProps & ReturnType<typeof mapDispatch>> = ({
+  login,
+  currentStack,
+}) => {
   const secondInput = useRef(null);
   const { t } = useTranslation();
 
@@ -37,12 +35,12 @@ const LogInScreen: FC<ReturnType<typeof mapDispatch>> = ({ login }) => {
     register,
     handleSubmit,
     setValue,
+    formState,
     triggerValidation,
     errors,
-    formState,
     getValues,
   } = useForm({
-    mode: 'onBlur',
+    mode: 'onSubmit',
     validationSchema: loginSchema,
   });
 
@@ -51,13 +49,10 @@ const LogInScreen: FC<ReturnType<typeof mapDispatch>> = ({ login }) => {
   };
 
   useEffect(() => {
-    SplashScreen.hide();
-  });
-
-  useEffect(() => {
+    invalidForm(errors);
     register('email');
     register('password');
-  }, [register]);
+  }, [register, formState, errors]);
 
   //TODO: Improve implementation
   const setEmail = useCallback(
@@ -83,8 +78,6 @@ const LogInScreen: FC<ReturnType<typeof mapDispatch>> = ({ login }) => {
   }, [triggerValidation]);
 
   const handleLogin = (values: any) => {
-    Haptic.error();
-    goToMainApp();
     login(values).then(null);
   };
 
@@ -110,8 +103,8 @@ const LogInScreen: FC<ReturnType<typeof mapDispatch>> = ({ login }) => {
             onChangeText={setEmail}
             onBlur={handleEmailValidation}
             onSubmitEditing={() => secondInput.current?.focus()}
+            error={errors.email && errors.email.message}
           />
-          {errors.email && <Text>{errors.email.message}</Text>}
           <TextInput
             ref={secondInput}
             autoCorrect={false}
@@ -123,20 +116,18 @@ const LogInScreen: FC<ReturnType<typeof mapDispatch>> = ({ login }) => {
             placeholder="general.password"
             onChangeText={setPassword}
             onBlur={handlePasswordValidation}
+            error={errors.password && errors.password.message}
           />
-          {errors.password && <Text>{errors.password.message}</Text>}
           <OtherText
             style={{ textAlign: 'center', fontFamily: mediumFont }}
             onPress={goToForgotPassword}
             color={mainAppColor}>
             {t('general.forgotPassword')}?
           </OtherText>
-          {formState.isValid && (
-            <BottomButton
-              onPress={handleSubmit(handleLogin)}
-              buttonName={t('general.logIn')}
-            />
-          )}
+          <BottomButton
+            onPress={handleSubmit(handleLogin)}
+            buttonName="general.logIn"
+          />
         </ScrollView>
       </KeyboardAvoidingView>
     </ScreenWrapper>
