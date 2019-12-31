@@ -21,16 +21,14 @@ const ChooseAuthScreen: FC<ReturnType<typeof mapDispatch>> = ({ login }) => {
   }, []);
 
   return (
-    <>
-      <View style={ChooseAuthScreenStyles.container}>
-        <ChooseAuthButton onPress={onPressLogin} name="logIn" />
-        <ChooseAuthButton onPress={login} name="facebook" />
-        <Text onPress={onPressSignUp}>
-          {t('chooseAuthScreen.dontHaveAnAccount')}&nbsp;&nbsp;
-          <OtherText color={mainAppColor}>{t('general.signUp')}</OtherText>
-        </Text>
-      </View>
-    </>
+    <View style={ChooseAuthScreenStyles.container}>
+      <ChooseAuthButton onPress={onPressLogin} name="logIn" />
+      <ChooseAuthButton onPress={login} name="facebook" />
+      <Text onPress={onPressSignUp}>
+        {t('chooseAuthScreen.dontHaveAnAccount')}&nbsp;&nbsp;
+        <OtherText color={mainAppColor}>{t('general.signUp')}</OtherText>
+      </Text>
+    </View>
   );
 };
 
