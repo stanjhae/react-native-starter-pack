@@ -1,6 +1,5 @@
 import { Navigation } from 'react-native-navigation';
 import { tabBarScale } from 'constants/constants';
-import i18next from 'i18next';
 import { translate } from 'utils/utils.functions';
 
 const goToMainApp = () => {

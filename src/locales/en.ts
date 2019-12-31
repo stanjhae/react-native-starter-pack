@@ -16,6 +16,8 @@ export default {
       emailRequired: 'Email is required',
       passwordRequired: 'Password is required',
       firstNameRequired: 'First name is required',
+      show: 'Show',
+      hide: 'Hide',
     },
     chooseAuthScreen: {
       dontHaveAnAccount: "Don't have an account?",

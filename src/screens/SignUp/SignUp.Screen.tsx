@@ -16,10 +16,6 @@ interface SignUpScreenProps {
   currentStack: string;
 }
 
-const mapDispatch = (dispatch: Dispatch) => ({
-  signUp: (payload: any) => dispatch.users.signUp(payload),
-});
-
 const SignUpScreen: FC<SignUpScreenProps & ReturnType<typeof mapDispatch>> = ({
   signUp,
   currentStack,
@@ -35,18 +31,19 @@ const SignUpScreen: FC<SignUpScreenProps & ReturnType<typeof mapDispatch>> = ({
     setValue,
     triggerValidation,
     errors,
+    formState,
   } = useForm({
     mode: 'onBlur',
     validationSchema: signUpSchema,
   });
 
   useEffect(() => {
-    invalidForm(errors);
+    invalidForm(formState.isSubmitted, errors);
     register('firstName');
     register('lastName');
     register('email');
     register('password');
-  }, [errors, register]);
+  }, [errors, formState.isSubmitted, register]);
 
   //TODO: Improve implementation
   const setFirstName = useCallback(
@@ -171,5 +168,9 @@ const SignUpScreen: FC<SignUpScreenProps & ReturnType<typeof mapDispatch>> = ({
     </ScreenWrapper>
   );
 };
+
+const mapDispatch = (dispatch: Dispatch) => ({
+  signUp: (payload: any) => dispatch.users.signUp(payload),
+});
 
 export default connect(null, mapDispatch)(SignUpScreen);

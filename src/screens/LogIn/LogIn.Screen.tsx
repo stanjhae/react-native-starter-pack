@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useRef } from 'react';
+import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import ScreenWrapper from 'components/ScreenWrapper/ScreenWrapper';
 import { connect } from 'react-redux';
 import { Dispatch } from 'store/index';
@@ -8,7 +8,6 @@ import TextInput from 'components/TextInput/TextInput';
 import KeyboardAvoidingView from 'components/KeyboardAvoidingView/KeyboardAvoidingView';
 import ScrollView from 'components/ScrollView/ScrollView';
 import OtherText from 'components/OtherText/OtherText';
-import { mediumFont } from 'constants/constants';
 import { useTranslation } from 'react-i18next';
 import { showForgotPasswordModal } from './Login.functions';
 import BottomButton from 'components/BottomButton/BottomButton';
@@ -19,10 +18,6 @@ import { invalidForm } from 'utils/utils.functions';
 interface LogInScreenProps {
   currentStack: string;
 }
-
-const mapDispatch = (dispatch: Dispatch) => ({
-  login: (payload: any) => dispatch.users.login(payload),
-});
 
 const LogInScreen: FC<LogInScreenProps & ReturnType<typeof mapDispatch>> = ({
   login,
@@ -40,19 +35,20 @@ const LogInScreen: FC<LogInScreenProps & ReturnType<typeof mapDispatch>> = ({
     errors,
     getValues,
   } = useForm({
-    mode: 'onSubmit',
+    mode: 'onBlur',
     validationSchema: loginSchema,
   });
+  const [secureText, setSecureText] = useState(true);
 
   const goToForgotPassword = () => {
     showForgotPasswordModal({ email: getValues().email });
   };
 
   useEffect(() => {
-    invalidForm(errors);
+    invalidForm(formState.isSubmitted, errors);
     register('email');
     register('password');
-  }, [register, formState, errors]);
+  }, [register, formState, errors, secureText]);
 
   //TODO: Improve implementation
   const setEmail = useCallback(
@@ -61,6 +57,10 @@ const LogInScreen: FC<LogInScreenProps & ReturnType<typeof mapDispatch>> = ({
     },
     [setValue],
   );
+
+  const onPressShowHide = useCallback(() => {
+    setSecureText(prevState => !prevState);
+  }, [setSecureText]);
 
   const setPassword = useCallback(
     value => {
@@ -106,9 +106,11 @@ const LogInScreen: FC<LogInScreenProps & ReturnType<typeof mapDispatch>> = ({
             error={errors.email && errors.email.message}
           />
           <TextInput
+            showHide={`general.${secureText ? 'show' : 'hide'}`}
+            onPressShowHide={onPressShowHide}
             ref={secondInput}
             autoCorrect={false}
-            secureTextEntry
+            secureTextEntry={secureText}
             autoCapitalize="none"
             textContentType="password"
             keyboardType="default"
@@ -119,7 +121,7 @@ const LogInScreen: FC<LogInScreenProps & ReturnType<typeof mapDispatch>> = ({
             error={errors.password && errors.password.message}
           />
           <OtherText
-            style={{ textAlign: 'center', fontFamily: mediumFont }}
+            style={{ textAlign: 'center' }}
             onPress={goToForgotPassword}
             color={mainAppColor}>
             {t('general.forgotPassword')}?
@@ -133,5 +135,9 @@ const LogInScreen: FC<LogInScreenProps & ReturnType<typeof mapDispatch>> = ({
     </ScreenWrapper>
   );
 };
+
+const mapDispatch = (dispatch: Dispatch) => ({
+  login: (payload: any) => dispatch.users.login(payload),
+});
 
 export default connect(null, mapDispatch)(LogInScreen);

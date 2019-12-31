@@ -35,6 +35,7 @@ const ForgotPasswordScreen: FC<ForgotPasswordScreenProps &
     handleSubmit,
     setValue,
     errors,
+    formState,
     triggerValidation,
   } = useForm({
     mode: 'onBlur',
@@ -42,9 +43,9 @@ const ForgotPasswordScreen: FC<ForgotPasswordScreenProps &
   });
 
   useEffect(() => {
-    invalidForm(errors);
+    invalidForm(formState.isSubmitted, errors);
     register('email');
-  }, [errors, register]);
+  }, [errors, formState.isSubmitted, register]);
 
   const setEmail = useCallback(
     value => {
