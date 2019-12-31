@@ -12,19 +12,11 @@ interface ScreenWrapperProps {
   customStyle?: StyleProp<ViewStyle>;
 }
 
-const ScreenWrapper: FC<ScreenWrapperProps> = ({
-  children,
-  style,
-  customStyle,
-}) => {
+const ScreenWrapper: FC<ScreenWrapperProps> = ({ children, style }) => {
   const styles = useDynamicStyleSheet(ScreenWrapperStyles);
   useEffect(() => {}, []);
   return (
-    <SafeAreaView
-      style={[
-        styles.container,
-        { ...(style as object), ...(customStyle as object) },
-      ]}>
+    <SafeAreaView style={[styles.container, { ...(style as object) }]}>
       {children}
     </SafeAreaView>
   );

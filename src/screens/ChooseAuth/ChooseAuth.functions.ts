@@ -1,9 +1,13 @@
 import { pushScreen } from 'navigation/navigation.actions';
 
 export const onPressLogin = () => {
-  pushScreen('ChooseAuthStack', 'LogInScreen', 'general.logIn');
+  pushScreen('ChooseAuthStack', 'AuthScreen', 'general.logIn', {
+    type: 'logIn',
+  });
 };
 
 export const onPressSignUp = () => {
-  pushScreen('ChooseAuthStack', 'SignUpScreen', 'general.signUp');
+  pushScreen('ChooseAuthStack', 'AuthScreen', 'general.signUp', {
+    type: 'signUp',
+  });
 };

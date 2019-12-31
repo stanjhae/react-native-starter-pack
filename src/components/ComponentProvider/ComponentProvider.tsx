@@ -9,12 +9,12 @@ const ComponentProvider = (Component: any, style?: any) => (props: any) => (
     <SafeAreaProvider>
       {props.reduxStore ? (
         <Provider store={props.reduxStore}>
-          <ScreenWrapper customStyle={style}>
+          <ScreenWrapper style={style}>
             <Component {...props} />
           </ScreenWrapper>
         </Provider>
       ) : (
-        <ScreenWrapper {...style}>
+        <ScreenWrapper style={style}>
           <Component {...props} />
         </ScreenWrapper>
       )}

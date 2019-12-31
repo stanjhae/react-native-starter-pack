@@ -9,10 +9,7 @@ import {
   TextInputSubmitEditingEventData,
   ViewStyle,
 } from 'react-native';
-import constants, {
-  borderBottomWidth,
-  mediumFont,
-} from '../../constants/constants';
+import constants, { borderBottomWidth, mediumFont } from 'constants/constants';
 import { useDarkModeContext } from 'react-native-dark-mode';
 import { useTranslation } from 'react-i18next';
 import { errorColor } from 'constants/colors';

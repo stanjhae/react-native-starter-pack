@@ -1,29 +1,22 @@
 import React, { FC, useCallback, useEffect, useRef } from 'react';
-import ScreenWrapper from 'components/ScreenWrapper/ScreenWrapper';
-import KeyboardAvoidingView from 'components/KeyboardAvoidingView/KeyboardAvoidingView';
-import ScrollView from 'components/ScrollView/ScrollView';
 import TextInput from 'components/TextInput/TextInput';
 import BottomButton from 'components/BottomButton/BottomButton';
 import { useTranslation } from 'react-i18next';
-import { connect } from 'react-redux';
-import { Dispatch } from 'store/index';
 import { useForm } from 'react-hook-form';
-import { signUpSchema } from 'utils/validationSchema';
-import TopBar from 'components/TopBar/TopBar';
+import { loginSchema, signUpSchema } from 'utils/validationSchema';
 import { invalidForm } from 'utils/utils.functions';
+import OtherText from 'components/OtherText/OtherText';
+import { mediumFont } from 'constants/constants';
+import { mainAppColor } from 'constants/colors';
+import { showForgotPasswordModal } from 'screens/Auth/Auth.functions';
 
-interface SignUpScreenProps {
-  currentStack: string;
+interface AuthFormProps {
+  currentStack?: string;
+  type: string;
+  action: any;
 }
 
-const mapDispatch = (dispatch: Dispatch) => ({
-  signUp: (payload: any) => dispatch.users.signUp(payload),
-});
-
-const SignUpScreen: FC<SignUpScreenProps & ReturnType<typeof mapDispatch>> = ({
-  signUp,
-  currentStack,
-}) => {
+const AuthForm: FC<AuthFormProps> = ({ type, action }) => {
   const secondInput = useRef(null);
   const thirdInput = useRef(null);
   const fourthInput = useRef(null);
@@ -34,19 +27,20 @@ const SignUpScreen: FC<SignUpScreenProps & ReturnType<typeof mapDispatch>> = ({
     handleSubmit,
     setValue,
     triggerValidation,
+    getValues,
     errors,
   } = useForm({
     mode: 'onBlur',
-    validationSchema: signUpSchema,
+    validationSchema: type === 'signUp' ? signUpSchema : loginSchema,
   });
 
   useEffect(() => {
     invalidForm(errors);
-    register('firstName');
-    register('lastName');
+    type === 'signUp' && register('firstName');
+    type === 'signUp' && register('lastName');
     register('email');
     register('password');
-  }, [errors, register]);
+  }, [errors, register, type]);
 
   //TODO: Improve implementation
   const setFirstName = useCallback(
@@ -93,17 +87,18 @@ const SignUpScreen: FC<SignUpScreenProps & ReturnType<typeof mapDispatch>> = ({
     triggerValidation('password').then(null);
   }, [triggerValidation]);
 
-  //TODO: Declare type
-  const handleSignUp = (values: any) => {
-    signUp(values);
+  const handleAction = (values: any) => {
+    action(values);
   };
 
-  //TODO: Combine login and sign up forms
+  const goToForgotPassword = () => {
+    showForgotPasswordModal({ email: getValues().email });
+  };
+
   return (
-    <ScreenWrapper>
-      <TopBar currentStack={currentStack} title="general.signUp" />
-      <KeyboardAvoidingView>
-        <ScrollView>
+    <>
+      {type === 'signUp' && (
+        <>
           <TextInput
             returnKeyType="next"
             blurOnSubmit={false}
@@ -133,43 +128,51 @@ const SignUpScreen: FC<SignUpScreenProps & ReturnType<typeof mapDispatch>> = ({
             // @ts-ignore
             onSubmitEditing={() => thirdInput.current.focus()}
           />
-          <TextInput
-            ref={thirdInput}
-            returnKeyType="next"
-            blurOnSubmit={false}
-            autoCorrect={false}
-            autoCapitalize="none"
-            textContentType="emailAddress"
-            keyboardType="email-address"
-            autoCompleteType="email"
-            placeholder="general.emailAddress"
-            onChangeText={setEmail}
-            onBlur={handleEmailValidation}
-            error={errors.email?.message}
-            // @ts-ignore
-            onSubmitEditing={() => fourthInput.current.focus()}
-          />
-          <TextInput
-            ref={fourthInput}
-            autoCorrect={false}
-            secureTextEntry
-            autoCapitalize="none"
-            textContentType="newPassword"
-            keyboardType="default"
-            autoCompleteType="password"
-            placeholder="general.password"
-            onChangeText={setPassword}
-            error={errors.password?.message}
-            onBlur={handlePasswordValidation}
-          />
-          <BottomButton
-            onPress={handleSubmit(handleSignUp)}
-            buttonName={t('general.signUp')}
-          />
-        </ScrollView>
-      </KeyboardAvoidingView>
-    </ScreenWrapper>
+        </>
+      )}
+      <TextInput
+        ref={thirdInput}
+        returnKeyType="next"
+        blurOnSubmit={false}
+        autoCorrect={false}
+        autoCapitalize="none"
+        textContentType="emailAddress"
+        keyboardType="email-address"
+        autoCompleteType="email"
+        placeholder="general.emailAddress"
+        onChangeText={setEmail}
+        onBlur={handleEmailValidation}
+        error={errors.email?.message}
+        // @ts-ignore
+        onSubmitEditing={() => fourthInput.current.focus()}
+      />
+      <TextInput
+        ref={fourthInput}
+        autoCorrect={false}
+        secureTextEntry
+        autoCapitalize="none"
+        textContentType="newPassword"
+        keyboardType="default"
+        autoCompleteType="password"
+        placeholder="general.password"
+        onChangeText={setPassword}
+        error={errors.password?.message}
+        onBlur={handlePasswordValidation}
+      />
+      {type === 'logIn' && (
+        <OtherText
+          style={{ textAlign: 'center', fontFamily: mediumFont }}
+          onPress={goToForgotPassword}
+          color={mainAppColor}>
+          {t('general.forgotPassword')}?
+        </OtherText>
+      )}
+      <BottomButton
+        onPress={handleSubmit(handleAction)}
+        buttonName={t(`general.${type}`)}
+      />
+    </>
   );
 };
 
-export default connect(null, mapDispatch)(SignUpScreen);
+export default AuthForm;
