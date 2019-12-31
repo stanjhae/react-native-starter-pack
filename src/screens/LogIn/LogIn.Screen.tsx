@@ -1,5 +1,4 @@
 import React, { FC, useCallback, useEffect, useRef } from 'react';
-import ScreenWrapper from 'components/ScreenWrapper/ScreenWrapper';
 import { connect } from 'react-redux';
 import { Dispatch } from 'store/index';
 import { useForm } from 'react-hook-form';
@@ -82,7 +81,7 @@ const LogInScreen: FC<LogInScreenProps & ReturnType<typeof mapDispatch>> = ({
   };
 
   return (
-    <ScreenWrapper>
+    <>
       <TopBar
         currentStack={currentStack}
         leftIconSize={19}
@@ -130,7 +129,7 @@ const LogInScreen: FC<LogInScreenProps & ReturnType<typeof mapDispatch>> = ({
           />
         </ScrollView>
       </KeyboardAvoidingView>
-    </ScreenWrapper>
+    </>
   );
 };
 
