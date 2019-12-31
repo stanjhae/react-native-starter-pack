@@ -19,7 +19,10 @@ const registerScreens = () => {
   );
   Navigation.registerComponent(
     'ChooseAuthScreen',
-    () => withRematch(ComponentProvider(ChooseAuthScreen)),
+    () =>
+      withRematch(
+        ComponentProvider(ChooseAuthScreen, { backgroundColor: 'red' }),
+      ),
     () => ChooseAuthScreen,
   );
   Navigation.registerComponent(

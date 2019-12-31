@@ -1,18 +1,22 @@
 import { DarkModeProvider as DP } from 'react-native-dark-mode';
-import React, { useState } from 'react';
+import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
-import { Navigation } from 'react-native-navigation';
+import ScreenWrapper from 'components/ScreenWrapper/ScreenWrapper';
 
-const ComponentProvider = (Component: any) => (props: any) => (
+const ComponentProvider = (Component: any, style?: any) => (props: any) => (
   <DP>
     <SafeAreaProvider>
       {props.reduxStore ? (
         <Provider store={props.reduxStore}>
-          <Component {...props} />
+          <ScreenWrapper customStyle={style}>
+            <Component {...props} />
+          </ScreenWrapper>
         </Provider>
       ) : (
-        <Component {...props} />
+        <ScreenWrapper {...style}>
+          <Component {...props} />
+        </ScreenWrapper>
       )}
     </SafeAreaProvider>
   </DP>

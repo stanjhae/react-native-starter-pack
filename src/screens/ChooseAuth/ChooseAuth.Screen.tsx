@@ -2,7 +2,6 @@ import React, { FC, useEffect } from 'react';
 import Text from '../../components/Text/Text';
 import { StyleSheet, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import ScreenWrapper from 'components/ScreenWrapper/ScreenWrapper';
 import OtherText from 'components/OtherText/OtherText';
 import ChooseAuthButton from './ChooseAuth.Button';
 import { connect } from 'react-redux';
@@ -22,7 +21,7 @@ const ChooseAuthScreen: FC<ReturnType<typeof mapDispatch>> = ({ login }) => {
   }, []);
 
   return (
-    <ScreenWrapper style={{ alignItems: 'center' }}>
+    <>
       <View style={ChooseAuthScreenStyles.container}>
         <ChooseAuthButton onPress={onPressLogin} name="logIn" />
         <ChooseAuthButton onPress={login} name="facebook" />
@@ -31,7 +30,7 @@ const ChooseAuthScreen: FC<ReturnType<typeof mapDispatch>> = ({ login }) => {
           <OtherText color={mainAppColor}>{t('general.signUp')}</OtherText>
         </Text>
       </View>
-    </ScreenWrapper>
+    </>
   );
 };
 
