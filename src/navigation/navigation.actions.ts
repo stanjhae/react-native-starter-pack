@@ -1,5 +1,5 @@
 import { Navigation } from 'react-native-navigation';
-import { mediumFont } from '../constants/constants';
+import { mediumFont } from 'constants/constants';
 import i18next from 'i18next';
 
 export const pushScreen = (
@@ -7,16 +7,14 @@ export const pushScreen = (
   screenToPush: string,
   headerTitle: string,
   props?: object,
+  pushOverBottomTabs?: boolean,
 ) => {
   Navigation.push(stackToPushTo, {
     component: {
       options: {
-        topBar: {
-          title: {
-            text: i18next.t(headerTitle),
-            fontSize: 15,
-            fontFamily: mediumFont,
-          },
+        bottomTabs: {
+          visible: !pushOverBottomTabs,
+          animate: true,
         },
       },
       id: screenToPush,
@@ -31,6 +29,10 @@ export const pushScreen = (
 
 export const popScreen = (stackToPopFrom: string) => {
   Navigation.pop(stackToPopFrom);
+};
+
+export const dismissModal = (componentToDismiss: string) => {
+  Navigation.dismissModal(componentToDismiss);
 };
 
 export const showModal = (
@@ -71,3 +73,22 @@ export const showModal = (
       ],
     },
   });
+
+export const showOverlay = (name: string) =>
+  Navigation.showOverlay({
+    component: {
+      name: name,
+      options: {
+        layout: {
+          backgroundColor: 'transparent',
+        },
+        overlay: {
+          interceptTouchOutside: true,
+        },
+      },
+    },
+  });
+
+export const dismissOverlay = (overlayToDismiss: string) => {
+  Navigation.dismissOverlay(overlayToDismiss);
+};

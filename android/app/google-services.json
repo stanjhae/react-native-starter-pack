@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "720203587885",
+    "firebase_url": "https://uptown-hu.firebaseio.com",
+    "project_id": "uptown-hu",
+    "storage_bucket": "uptown-hu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720203587885:android:bf0d90cb33dd71aae2b3a4",
+        "android_client_info": {
+          "package_name": "com.uptown"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "720203587885-407f3msfggv7ugt8v296k2l8k0ju87qb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.uptown",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "720203587885-akvd2dbtsoni4iq3g0o7pmplah86vl39.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9FrxUs69MwY4Ui-rtqgCdfW3_ZWcghNE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "720203587885-akvd2dbtsoni4iq3g0o7pmplah86vl39.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "720203587885-ccrrdse6uj22udo295lgi2it150lta02.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.debrecen.uptown"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

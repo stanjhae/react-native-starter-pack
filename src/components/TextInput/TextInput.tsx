@@ -7,17 +7,18 @@ import {
   TextInput as T,
   TextInput as Input,
   TextInputSubmitEditingEventData,
+  View,
   ViewStyle,
 } from 'react-native';
-import constants, {
-  borderBottomWidth,
-  mediumFont,
-} from '../../constants/constants';
+import { borderBottomWidth, mediumFont } from 'constants/constants';
 import { useDarkModeContext } from 'react-native-dark-mode';
 import { useTranslation } from 'react-i18next';
+import { errorColor } from 'constants/colors';
+import OtherText from 'components/OtherText/OtherText';
 
 interface TextInputProps {
   onChangeText: (text: string) => void;
+  onBlur?: () => void;
   placeholder: string;
   autoCompleteType: any;
   textContentType: any;
@@ -34,6 +35,9 @@ interface TextInputProps {
   blurOnSubmit?: boolean;
   returnKeyType?: ReturnKeyTypeOptions;
   defaultValue?: string;
+  error?: string;
+  showHide?: string;
+  onPressShowHide?: () => void;
 }
 
 const color = {
@@ -47,6 +51,7 @@ const TextInput: FC<TextInputProps> = forwardRef(
       blurOnSubmit,
       onSubmitEditing,
       onChangeText,
+      onBlur,
       placeholder,
       autoCompleteType,
       textContentType,
@@ -58,38 +63,63 @@ const TextInput: FC<TextInputProps> = forwardRef(
       style,
       returnKeyType,
       defaultValue,
+      error,
+      showHide,
+      onPressShowHide,
     },
     ref,
   ) => {
     const { t } = useTranslation();
     const mode = useDarkModeContext();
+    const isPassword = () =>
+      textContentType === 'password' || autoCompleteType === 'password';
     return (
-      <Input
-        ref={ref}
-        defaultValue={defaultValue}
-        returnKeyType={returnKeyType}
-        blurOnSubmit={blurOnSubmit}
-        onSubmitEditing={onSubmitEditing}
-        autoCorrect={autoCorrect}
-        autoCapitalize={autoCapitalize}
-        secureTextEntry={secureTextEntry}
-        textContentType={textContentType}
-        autoFocus={autoFocus}
-        keyboardType={keyboardType}
-        autoCompleteType={autoCompleteType}
-        placeholderTextColor="#999"
-        placeholder={t(placeholder)}
-        clearButtonMode="always"
-        style={[
-          styles.container,
-          {
-            color: color[mode],
-            borderBottomColor: color[mode],
-            ...(style as object),
-          },
-        ]}
-        onChangeText={text => onChangeText(text)}
-      />
+      <>
+        <View
+          style={[
+            styles.container,
+            {
+              ...(style as object),
+              borderBottomWidth: error ? 1 : borderBottomWidth,
+              borderBottomColor: error ? errorColor : color[mode],
+              marginBottom: error ? 10 : 30,
+            },
+          ]}>
+          <Input
+            ref={ref}
+            defaultValue={defaultValue}
+            returnKeyType={returnKeyType}
+            blurOnSubmit={blurOnSubmit}
+            onSubmitEditing={onSubmitEditing}
+            autoCorrect={autoCorrect}
+            autoCapitalize={autoCapitalize}
+            secureTextEntry={secureTextEntry}
+            textContentType={textContentType}
+            autoFocus={autoFocus}
+            keyboardType={keyboardType}
+            autoCompleteType={autoCompleteType}
+            onBlur={onBlur}
+            placeholderTextColor="#999"
+            placeholder={t(placeholder)}
+            clearButtonMode={isPassword() ? 'never' : 'always'}
+            style={[
+              styles.textInput,
+              {
+                color: color[mode],
+              },
+            ]}
+            onChangeText={text => onChangeText(text)}
+          />
+          {isPassword() ? (
+            <OtherText onPress={onPressShowHide}>
+              {showHide && t(showHide)}
+            </OtherText>
+          ) : null}
+        </View>
+        {error ? (
+          <OtherText style={styles.errorText}>{t(error)}</OtherText>
+        ) : null}
+      </>
     );
   },
 );
@@ -104,11 +134,19 @@ TextInput.defaultProps = {
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection: 'row',
+    height: 44,
+    alignItems: 'center',
+  },
+  textInput: {
     fontFamily: mediumFont,
-    marginBottom: 30,
-    paddingVertical: 10,
-    borderBottomWidth,
-    width: constants.width * 0.9,
+    height: '100%',
+    flex: 1,
+  },
+  errorText: {
+    marginBottom: 20,
+    color: errorColor,
+    fontFamily: mediumFont,
   },
 });
 

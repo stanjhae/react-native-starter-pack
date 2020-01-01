@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import {
   DynamicStyleSheet,
@@ -13,6 +13,7 @@ interface ScreenWrapperProps {
 
 const ScreenWrapper: FC<ScreenWrapperProps> = ({ children, style }) => {
   const styles = useDynamicStyleSheet(ScreenWrapperStyles);
+  useEffect(() => {}, []);
   return (
     <SafeAreaView style={[styles.container, { ...(style as object) }]}>
       {children}

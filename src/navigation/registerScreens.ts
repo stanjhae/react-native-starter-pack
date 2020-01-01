@@ -1,37 +1,58 @@
 import { Navigation } from 'react-native-navigation';
 import ChooseAuthScreen from 'screens/ChooseAuth/ChooseAuth.Screen';
-import LogInScreen from 'screens/LogIn/LogIn.Screen';
-import SigUpScreen from 'screens/SignUp/SignUp.Screen';
 import ComponentProvider from 'components/ComponentProvider/ComponentProvider';
-import AuthLoadingScreen from 'screens/AuthLoading/AuthLoadingScreen';
+import AuthLoadingScreen from 'screens/AuthLoading/AuthLoading.Screen';
+import ProfileScreen from 'screens/Profile/Profile.Screen';
+import withRematch from 'store/withRematch';
 import ForgotPasswordScreen from 'screens/ForgotPassword/ForgotPassword.Screen';
+import VendorsScreen from 'screens/Vendors/Vendors.Screen';
+import HomeScreen from 'screens/Home/Home.Screen';
+import MoreScreen from 'screens/More/More.Screen';
+import AuthScreen from 'screens/Auth/Auth.Screen';
+import ActionOverlay from 'components/ActionOverlay/ActionOverlay';
 
 const registerScreens = () => {
   Navigation.registerComponent(
     'AuthLoadingScreen',
-    () => ComponentProvider(AuthLoadingScreen),
-    () => LogInScreen,
+    () => withRematch(ComponentProvider(AuthLoadingScreen)),
+    () => AuthLoadingScreen,
   );
   Navigation.registerComponent(
     'ChooseAuthScreen',
-    () => ComponentProvider(ChooseAuthScreen),
+    () => withRematch(ComponentProvider(ChooseAuthScreen)),
     () => ChooseAuthScreen,
   );
   Navigation.registerComponent(
-    'LogInScreen',
-    () => ComponentProvider(LogInScreen),
-    () => LogInScreen,
+    'AuthScreen',
+    () => withRematch(ComponentProvider(AuthScreen)),
+    () => AuthScreen,
   );
   Navigation.registerComponent(
-    'SignUpScreen',
-    () => ComponentProvider(SigUpScreen),
-    () => LogInScreen,
+    'ProfileScreen',
+    () => withRematch(ComponentProvider(ProfileScreen)),
+    () => ProfileScreen,
   );
   Navigation.registerComponent(
     'ForgotPasswordScreen',
-    () => ComponentProvider(ForgotPasswordScreen),
+    () => withRematch(ComponentProvider(ForgotPasswordScreen)),
     () => ForgotPasswordScreen,
   );
+  Navigation.registerComponent(
+    'HomeScreen',
+    () => ComponentProvider(HomeScreen),
+    () => HomeScreen,
+  );
+  Navigation.registerComponent(
+    'VendorsScreen',
+    () => ComponentProvider(VendorsScreen),
+    () => VendorsScreen,
+  );
+  Navigation.registerComponent(
+    'MoreScreen',
+    () => ComponentProvider(MoreScreen),
+    () => MoreScreen,
+  );
+  Navigation.registerComponent('ActionOverlay', () => ActionOverlay);
 };
 
 export default registerScreens;

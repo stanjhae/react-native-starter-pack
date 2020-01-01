@@ -36,13 +36,20 @@ target 'uptown' do
 
   pod 'ReactNativeDarkMode', :path => '../node_modules/react-native-dark-mode'
 
+  pod 'Firebase/Analytics'
 
+
+  pod 'RNImageCropPicker', :path => '../node_modules/react-native-image-crop-picker'
   pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
 
+
   pod 'RNReactNativeHapticFeedback', :path => '../node_modules/react-native-haptic-feedback'
+  pod 'RNImageCropPicker', :path => '../node_modules/react-native-image-crop-picker'
 
 
   pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
+  pod 'react-native-blur', :path => '../node_modules/@react-native-community/blur'
 
   target 'uptownTests' do
     inherit! :search_paths

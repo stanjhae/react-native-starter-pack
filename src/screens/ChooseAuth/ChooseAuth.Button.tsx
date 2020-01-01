@@ -1,43 +1,41 @@
-import React, { FC } from 'react';
-import {
-  DynamicStyleSheet,
-  DynamicValue,
-  useDynamicStyleSheet,
-} from 'react-native-dark-mode';
+import React, { FC, useEffect } from 'react';
+import { useDarkModeContext } from 'react-native-dark-mode';
 import constants, { boldFont } from 'constants/constants.ts';
 import Text from 'components/Text/Text';
 import { useTranslation } from 'react-i18next';
 import TouchableOpacity from 'components/ToucbableOpacity/TouchableOpacity';
+import { StyleSheet } from 'react-native';
+import { chooseAuthButtonColors } from 'constants/colors';
 
 interface ChooseAuthButtonProps {
   name: string;
   onPress: any;
-  screenToPush: string;
 }
 
 const ChooseAuthButton: FC<ChooseAuthButtonProps> = ({ name, onPress }) => {
+  useEffect(() => {}, []);
   const { t } = useTranslation();
-  const ChooseAuthButtonStyles = useDynamicStyleSheet(styles);
+  const currentMode = useDarkModeContext();
   return (
     <TouchableOpacity
       onPress={onPress}
       style={[
         ChooseAuthButtonStyles.container,
-        { maxHeight: 60, maxWidth: 290 },
+        { backgroundColor: chooseAuthButtonColors[currentMode] },
       ]}>
       <Text style={ChooseAuthButtonStyles.text}>{t(`general.${name}`)}</Text>
     </TouchableOpacity>
   );
 };
 
-const styles = new DynamicStyleSheet({
+const ChooseAuthButtonStyles = StyleSheet.create({
   container: {
-    height: constants.height * 0.08,
+    height: 62,
     width: constants.width * 0.7,
+    maxWidth: 290,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 20,
-    backgroundColor: new DynamicValue('#E9ECEF', '#424242'),
     borderRadius: 30,
   },
   text: {

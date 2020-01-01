@@ -6,7 +6,8 @@ import {
   Text,
   TextStyle,
 } from 'react-native';
-import { baseFontSize, normalFont } from '../../constants/constants';
+import { baseFontSize, mediumFont } from 'constants/constants';
+import { mainAppColor } from 'constants/colors';
 
 interface OtherTextProps {
   color?: string;
@@ -16,7 +17,10 @@ interface OtherTextProps {
 const OtherText: FC<OtherTextProps> = ({ children, color, style, onPress }) => (
   <Text
     onPress={onPress}
-    style={[OtherTextStyles.text, { color, ...(style as object) }]}>
+    style={[
+      OtherTextStyles.text,
+      { color: color || mainAppColor, ...(style as object) },
+    ]}>
     {children}
   </Text>
 );
@@ -24,7 +28,7 @@ const OtherText: FC<OtherTextProps> = ({ children, color, style, onPress }) => (
 const OtherTextStyles = StyleSheet.create({
   text: {
     fontSize: baseFontSize,
-    fontFamily: normalFont,
+    fontFamily: mediumFont,
   },
 });
 
