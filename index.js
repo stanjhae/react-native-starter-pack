@@ -4,7 +4,7 @@ import './initializeI18next';
 import { bottomTabConfig, layoutColors, mainAppColor } from 'constants/colors';
 import { eventEmitter, initialMode } from 'react-native-dark-mode';
 import { normalFont } from 'constants/constants';
-import goToMainApp from 'utils/goToMainApp';
+import { setRoot } from 'utils/utils.functions';
 
 eventEmitter.on('currentModeChanged', newMode => {
   Navigation.mergeOptions('bottomTabs', {
@@ -13,7 +13,7 @@ eventEmitter.on('currentModeChanged', newMode => {
     },
   });
 
-  Navigation.mergeOptions('homeStack', {
+  Navigation.mergeOptions('HomeStack', {
     bottomTab: {
       iconColor: bottomTabConfig[newMode].color,
       textColor: bottomTabConfig[newMode].color,
@@ -24,7 +24,7 @@ eventEmitter.on('currentModeChanged', newMode => {
     },
   });
 
-  Navigation.mergeOptions('vendorsStack', {
+  Navigation.mergeOptions('VendorsStack', {
     bottomTab: {
       iconColor: bottomTabConfig[newMode].color,
       textColor: bottomTabConfig[newMode].color,
@@ -35,7 +35,7 @@ eventEmitter.on('currentModeChanged', newMode => {
     },
   });
 
-  Navigation.mergeOptions('profileStack', {
+  Navigation.mergeOptions('ProfileStack', {
     bottomTab: {
       iconColor: bottomTabConfig[newMode].color,
       textColor: bottomTabConfig[newMode].color,
@@ -78,12 +78,5 @@ Navigation.events().registerAppLaunchedListener(async () => {
       visible: false,
     },
   });
-  // goToMainApp();
-  Navigation.setRoot({
-    root: {
-      component: {
-        name: 'AuthLoadingScreen',
-      },
-    },
-  });
+  setRoot('AuthLoadingStack', 'AuthLoadingScreen');
 });

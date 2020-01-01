@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from 'react';
-import Text from '../../components/Text/Text';
+import Text from 'components/Text/Text';
 import { StyleSheet, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import OtherText from 'components/OtherText/OtherText';

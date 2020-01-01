@@ -1,11 +1,10 @@
 import React, { FC } from 'react';
-import Text from 'components/Text/Text';
-import TabScreenWrapper from 'components/TabScreenWrapper/TabScreenWrapper';
+import TopBar from 'components/TopBar/TopBar';
 
 const VendorsScreen: FC = () => (
-  <TabScreenWrapper title="general.vendors">
-    <Text>Vendors</Text>
-  </TabScreenWrapper>
+  <>
+    <TopBar noIcons currentStack="" title="general.vendors" />
+  </>
 );
 
 export default VendorsScreen;

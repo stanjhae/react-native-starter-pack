@@ -7,9 +7,16 @@ export const pushScreen = (
   screenToPush: string,
   headerTitle: string,
   props?: object,
+  pushOverBottomTabs?: boolean,
 ) => {
   Navigation.push(stackToPushTo, {
     component: {
+      options: {
+        bottomTabs: {
+          visible: !pushOverBottomTabs,
+          animate: true,
+        },
+      },
       id: screenToPush,
       name: screenToPush,
       passProps: {
@@ -66,3 +73,22 @@ export const showModal = (
       ],
     },
   });
+
+export const showOverlay = (name: string) =>
+  Navigation.showOverlay({
+    component: {
+      name: name,
+      options: {
+        layout: {
+          backgroundColor: 'transparent',
+        },
+        overlay: {
+          interceptTouchOutside: true,
+        },
+      },
+    },
+  });
+
+export const dismissOverlay = (overlayToDismiss: string) => {
+  Navigation.dismissOverlay(overlayToDismiss);
+};

@@ -10,6 +10,8 @@ import firestore from '@react-native-firebase/firestore';
 import { Dispatch } from 'store/index';
 import storage from '@react-native-firebase/storage';
 import { pushScreen } from 'navigation/navigation.actions';
+import i18next from 'i18next';
+import goToMainApp from 'utils/goToMainApp';
 
 export const facebookLogin = async (): Promise<any> => {
   const res = await LoginManager.logInWithPermissions([
@@ -78,7 +80,10 @@ export const authenticateWithPassword = async (
     .then(method => {
       if (!method.length) {
         // Check if user exists
-        Alert.alert('Authentication failed', 'User does not exist');
+        Alert.alert(
+          i18next.t('general.authenticationFailed'),
+          `${i18next.t('general.noAccount')} ${email}.`,
+        );
       } else if (method.includes('password')) {
         // If user has a password, log them in
         auth()
@@ -89,7 +94,7 @@ export const authenticateWithPassword = async (
                 ...usr,
                 emailVerified: response.user.emailVerified,
               });
-              pushScreen('ChooseAuthStack', 'ProfileScreen');
+              goToMainApp();
             });
           })
           .catch(error => {

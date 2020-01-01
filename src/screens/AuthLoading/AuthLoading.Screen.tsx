@@ -6,30 +6,10 @@ import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import { connect } from 'react-redux';
 import { Dispatch } from 'store/index';
+import goToMainApp from 'utils/goToMainApp';
+import {setRoot} from 'utils/utils.functions';
 
 let update = false;
-
-const setRoot = (screen: string) => {
-  Navigation.setRoot({
-    root: {
-      stack: {
-        id: 'ChooseAuthStack',
-        children: [
-          {
-            component: {
-              options: {
-                topBar: {
-                  visible: false,
-                },
-              },
-              name: screen,
-            },
-          },
-        ],
-      },
-    },
-  }).then(null);
-};
 
 const mapDispatch = (dispatch: Dispatch) => ({
   updateUserSuccess: (payload: any) =>
@@ -56,23 +36,22 @@ const AuthLoadingScreen: FC<ReturnType<typeof mapDispatch>> = ({
               ...user.data(),
               emailVerified: response.emailVerified,
             });
-            setRoot('ProfileScreen');
+            goToMainApp();
           } else {
           }
         } else {
           logout();
-          setRoot('ChooseAuthScreen');
+          setRoot('ChooseAuthStack', 'ChooseAuthScreen');
         }
       } else {
         update = true;
         if (!response) {
-          setRoot('ChooseAuthScreen');
+          setRoot('ChooseAuthStack', 'ChooseAuthScreen');
         }
       }
     };
 
-    const userSubscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return userSubscriber;
+    return auth().onAuthStateChanged(onAuthStateChanged);
   });
 
   return (

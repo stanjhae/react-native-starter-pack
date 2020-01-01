@@ -18,6 +18,10 @@ export default {
       firstNameRequired: 'First name is required',
       show: 'Show',
       hide: 'Hide',
+      authenticationFailed: 'Authentication failed',
+      noAccount: "We can't find an account with",
+      tryAgain: 'Try again',
+      youCanSignUp: "If you don't have an account, you can sign up",
     },
     chooseAuthScreen: {
       dontHaveAnAccount: "Don't have an account?",

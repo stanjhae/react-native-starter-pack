@@ -1,16 +1,15 @@
 import React, { FC, useEffect } from 'react';
-import Text from 'components/Text/Text';
 import SplashScreen from 'react-native-splash-screen';
-import TabScreenWrapper from 'components/TabScreenWrapper/TabScreenWrapper';
+import TopBar from 'components/TopBar/TopBar';
 
 const HomeScreen: FC = () => {
   useEffect(() => {
     SplashScreen.hide();
   });
   return (
-    <TabScreenWrapper title="general.explore">
-      <Text>Explore</Text>
-    </TabScreenWrapper>
+    <>
+      <TopBar noIcons currentStack="" title="general.explore" />
+    </>
   );
 };
 

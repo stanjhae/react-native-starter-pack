@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import { View } from 'react-native';
 import TopBarStyles from 'components/TopBar/TopBar.styles';
 import TouchableOpacity from 'components/ToucbableOpacity/TouchableOpacity';

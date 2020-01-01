@@ -10,10 +10,10 @@ const goToMainApp = () => {
         children: [
           {
             stack: {
+              id: 'HomeStack',
               children: [
                 {
                   component: {
-                    id: 'homeStack',
                     options: {
                       bottomTab: {
                         icon: {
@@ -31,10 +31,10 @@ const goToMainApp = () => {
           },
           {
             stack: {
+              id: 'VendorsStack',
               children: [
                 {
                   component: {
-                    id: 'vendorsStack',
                     options: {
                       bottomTab: {
                         icon: {
@@ -52,10 +52,10 @@ const goToMainApp = () => {
           },
           {
             stack: {
+              id: 'ProfileStack',
               children: [
                 {
                   component: {
-                    id: 'profileStack',
                     options: {
                       bottomTab: {
                         icon: {

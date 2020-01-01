@@ -7,9 +7,11 @@ import {
   authenticateWithPassword,
   firebaseImageUpload,
 } from 'store/helpers';
-import { dismissModal, pushScreen } from 'navigation/navigation.actions';
+import { dismissModal } from 'navigation/navigation.actions';
 import { Alert } from 'react-native';
 import storage from '@react-native-firebase/storage';
+import goToMainApp from 'utils/goToMainApp';
+import { setRoot } from 'utils/utils.functions';
 
 export type UsersState = {
   uid: string;
@@ -61,7 +63,7 @@ const model = {
                 ...payload,
                 uid: response.user.uid,
               });
-              pushScreen('ChooseAuthStack', 'ProfileScreen');
+              goToMainApp();
             });
         })
         .catch(error => {
@@ -138,7 +140,7 @@ const model = {
     },
     logout: () => {
       auth().signOut();
-      pushScreen('ChooseAuthStack', 'ChooseAuthScreen');
+      setRoot('ChooseAuthStack', 'ChooseAuthScreen');
     },
   }),
 };

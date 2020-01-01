@@ -1,5 +1,4 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
-import ScreenWrapper from 'components/ScreenWrapper/ScreenWrapper';
 import Text from 'components/Text/Text';
 import { Alert, Button, ScrollView, TextInput } from 'react-native';
 import { connect } from 'react-redux';
@@ -8,6 +7,7 @@ import { Image } from 'react-native';
 import { useForm } from 'react-hook-form';
 import ImagePicker from 'react-native-image-crop-picker';
 import { profileSchema } from 'utils/validationSchema';
+import TopBar from 'components/TopBar/TopBar';
 
 const mapState = (state: RootState) => ({
   user: state.users,
@@ -22,7 +22,12 @@ const mapDispatch = (dispatch: Dispatch) => ({
   logout: () => dispatch.users.logout(),
 });
 
-const ProfileScreen: FC<ReturnType<typeof mapState> &
+interface ProfileScreenProps {
+  currentStack: string;
+}
+
+const ProfileScreen: FC<ProfileScreenProps &
+  ReturnType<typeof mapState> &
   ReturnType<typeof mapDispatch>> = ({
   user,
   verifyEmail,
@@ -31,6 +36,7 @@ const ProfileScreen: FC<ReturnType<typeof mapState> &
   verifyCurrentPassword,
   forgotPassword,
   logout,
+  currentStack,
 }) => {
   const [avatar, setAvatar] = useState('');
 
@@ -119,7 +125,8 @@ const ProfileScreen: FC<ReturnType<typeof mapState> &
   };
 
   return (
-    <ScreenWrapper>
+    <>
+      <TopBar currentStack={currentStack} title="general.profile" />
       <ScrollView>
         {(!!avatar || !!user.avatar) && (
           <Image
@@ -163,7 +170,7 @@ const ProfileScreen: FC<ReturnType<typeof mapState> &
         <Button title={'Forgot Password'} onPress={promptForgotPassword} />
         <Button title={'Log out'} onPress={logout} />
       </ScrollView>
-    </ScreenWrapper>
+    </>
   );
 };
 
