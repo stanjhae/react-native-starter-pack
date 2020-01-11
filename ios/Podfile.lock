@@ -541,7 +541,7 @@ PODS:
     - ReactCommon/jscallinvoker (= 0.61.5)
   - ReactNativeDarkMode (0.2.1):
     - React
-  - ReactNativeNavigation (4.0.9):
+  - ReactNativeNavigation (4.4.0):
     - React
   - RNCAsyncStorage (1.7.1):
     - React
@@ -791,7 +791,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
   ReactNativeDarkMode: 0e6e7bdbd387eb949fa7ff238a48f6d6431a428d
-  ReactNativeNavigation: 0d56442c71941833659002268312ae8464044f30
+  ReactNativeNavigation: 6a771d662fedc86f5e8df91debf3c02fe5f3e7f0
   RNCAsyncStorage: 8539fc80a0075fcc9c8e2dff84cd22dc5bf1dacf
   RNFBApp: 5b215aacc09105a1761de31b9a0eb2abcce06253
   RNFBAuth: 61673c0d38ce225c315e7be13a1b494904baedd2

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'store/index';
 import KeyboardAvoidingView from 'components/KeyboardAvoidingView/KeyboardAvoidingView';
 import ScrollView from 'components/ScrollView/ScrollView';
-import TopBar from 'components/TopBar/TopBar';
 import AuthForm from 'screens/Auth/Auth.Form';
 
 interface AuthScreenProps {
@@ -20,20 +19,12 @@ const AuthScreen: FC<AuthScreenProps & ReturnType<typeof mapDispatch>> = ({
   login,
   signUp,
   type,
-  currentStack,
 }) => (
-  <>
-    <TopBar
-      currentStack={currentStack}
-      leftIconSize={19}
-      title={`general.${type}`}
-    />
-    <KeyboardAvoidingView>
-      <ScrollView>
-        <AuthForm type={type} action={type === 'logIn' ? login : signUp} />
-      </ScrollView>
-    </KeyboardAvoidingView>
-  </>
+  <KeyboardAvoidingView>
+    <ScrollView>
+      <AuthForm type={type} action={type === 'logIn' ? login : signUp} />
+    </ScrollView>
+  </KeyboardAvoidingView>
 );
 
 export default connect(null, mapDispatch)(AuthScreen);

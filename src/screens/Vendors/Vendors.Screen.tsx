@@ -1,10 +1,6 @@
 import React, { FC } from 'react';
-import TopBar from 'components/TopBar/TopBar';
+import ScrollView from 'components/ScrollView/ScrollView';
 
-const VendorsScreen: FC = () => (
-  <>
-    <TopBar noIcons currentStack="" title="general.vendors" />
-  </>
-);
+const VendorsScreen: FC = () => <ScrollView />;
 
 export default VendorsScreen;
