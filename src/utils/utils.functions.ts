@@ -1,6 +1,6 @@
 import Haptic from 'utils/Haptic';
 import i18next from 'i18next';
-import { Navigation } from 'react-native-navigation';
+import { Navigation, Options } from 'react-native-navigation';
 
 export const translate = (text: string): string => i18next.t(text);
 
@@ -14,7 +14,7 @@ export const invalidForm = (submitted: boolean, errors: object) => {
   }
 };
 
-export const setRoot = (stackId: string, screen: string) => {
+export const setRoot = (stackId: string, screen: string, options?: Options) => {
   Navigation.setRoot({
     root: {
       stack: {
@@ -22,6 +22,9 @@ export const setRoot = (stackId: string, screen: string) => {
         children: [
           {
             component: {
+              options: {
+                ...options,
+              },
               name: screen,
             },
           },

@@ -1,13 +1,18 @@
 import React, { FC, useEffect } from 'react';
 import Text from '../../components/Text/Text';
-import { Navigation } from 'react-native-navigation';
 import ScreenWrapper from '../../components/ScreenWrapper/ScreenWrapper';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import { connect } from 'react-redux';
 import { Dispatch } from 'store/index';
 import goToMainApp from 'utils/goToMainApp';
-import {setRoot} from 'utils/utils.functions';
+import { setRoot } from 'utils/utils.functions';
+
+const gotoChooseAuth = () => {
+  setRoot('ChooseAuthStack', 'ChooseAuthScreen', {
+    topBar: { visible: false },
+  });
+};
 
 let update = false;
 
@@ -41,12 +46,12 @@ const AuthLoadingScreen: FC<ReturnType<typeof mapDispatch>> = ({
           }
         } else {
           logout();
-          setRoot('ChooseAuthStack', 'ChooseAuthScreen');
+          gotoChooseAuth();
         }
       } else {
         update = true;
         if (!response) {
-          setRoot('ChooseAuthStack', 'ChooseAuthScreen');
+          gotoChooseAuth();
         }
       }
     };

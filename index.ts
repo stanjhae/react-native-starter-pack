@@ -1,10 +1,28 @@
-import { Navigation } from 'react-native-navigation';
+import { Navigation, OptionsTopBar } from 'react-native-navigation';
 import registerScreens from 'navigation/registerScreens';
 import './initializeI18next';
 import { bottomTabConfig, layoutColors, mainAppColor } from 'constants/colors';
 import { eventEmitter, initialMode } from 'react-native-dark-mode';
-import { normalFont } from 'constants/constants';
+import { baseFontSize, mediumFont, normalFont } from 'constants/constants';
 import { setRoot } from 'utils/utils.functions';
+import { dismissModal } from 'navigation/navigation.actions';
+
+// TODO: make code in this file more efficient
+
+const defaultTopBarOptions: OptionsTopBar = {
+  title: {
+    fontFamily: mediumFont,
+    fontSize: baseFontSize,
+  },
+};
+
+Navigation.events().registerNavigationButtonPressedListener(({ buttonId }) => {
+  switch (buttonId) {
+    case 'ForgotPasswordScreen': {
+      dismissModal('ForgotPasswordStack');
+    }
+  }
+});
 
 eventEmitter.on('currentModeChanged', newMode => {
   Navigation.mergeOptions('bottomTabs', {
@@ -51,7 +69,7 @@ eventEmitter.on('currentModeChanged', newMode => {
       backgroundColor: layoutColors[newMode],
     },
     topBar: {
-      visible: false,
+      ...defaultTopBarOptions,
     },
   });
 });
@@ -75,8 +93,10 @@ Navigation.events().registerAppLaunchedListener(async () => {
       backgroundColor: layoutColors[initialMode],
     },
     topBar: {
-      visible: false,
+      ...defaultTopBarOptions,
     },
   });
-  setRoot('AuthLoadingStack', 'AuthLoadingScreen');
+  setRoot('AuthLoadingStack', 'AuthLoadingScreen', {
+    topBar: { visible: false },
+  });
 });

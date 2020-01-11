@@ -8,10 +8,7 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'store/index';
 import { mainAppColor } from 'constants/colors';
 import SplashScreen from 'react-native-splash-screen';
-import {
-  onPressLogin,
-  onPressSignUp,
-} from 'screens/ChooseAuth/ChooseAuth.functions';
+import { onPressChooseAuthButton } from 'screens/ChooseAuth/ChooseAuth.functions';
 
 const ChooseAuthScreen: FC<ReturnType<typeof mapDispatch>> = ({ login }) => {
   const { t } = useTranslation();
@@ -22,9 +19,12 @@ const ChooseAuthScreen: FC<ReturnType<typeof mapDispatch>> = ({ login }) => {
 
   return (
     <View style={ChooseAuthScreenStyles.container}>
-      <ChooseAuthButton onPress={onPressLogin} name="logIn" />
+      <ChooseAuthButton
+        onPress={() => onPressChooseAuthButton('logIn')}
+        name="logIn"
+      />
       <ChooseAuthButton onPress={login} name="facebook" />
-      <Text onPress={onPressSignUp}>
+      <Text onPress={() => onPressChooseAuthButton('signUp')}>
         {t('chooseAuthScreen.dontHaveAnAccount')}&nbsp;&nbsp;
         <OtherText color={mainAppColor}>{t('general.signUp')}</OtherText>
       </Text>

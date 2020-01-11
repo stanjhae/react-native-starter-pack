@@ -1,18 +1,17 @@
 import React, { FC } from 'react';
-import TopBar from 'components/TopBar/TopBar';
 import { Button } from 'react-native';
 import { pushScreen } from 'navigation/navigation.actions';
+import ScrollView from 'components/ScrollView/ScrollView';
 
 const MoreScreen: FC = () => (
-  <>
-    <TopBar noIcons currentStack="" title="general.profile" />
+  <ScrollView>
     <Button
       title="Profile"
       onPress={() =>
         pushScreen('ProfileStack', 'ProfileScreen', 'general.profile', {}, true)
       }
     />
-  </>
+  </ScrollView>
 );
 
 export default MoreScreen;
