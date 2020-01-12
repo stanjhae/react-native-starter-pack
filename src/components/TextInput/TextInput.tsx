@@ -10,7 +10,11 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import { borderBottomWidth, mediumFont } from 'constants/constants';
+import {
+  borderBottomWidth,
+  mediumFont,
+  standardDarkLightColors,
+} from 'constants/constants';
 import { useDarkModeContext } from 'react-native-dark-mode';
 import { useTranslation } from 'react-i18next';
 import { errorColor } from 'constants/colors';
@@ -39,11 +43,6 @@ interface TextInputProps {
   showHide?: string;
   onPressShowHide?: () => void;
 }
-
-const color = {
-  light: 'black',
-  dark: 'white',
-};
 
 const TextInput: FC<TextInputProps> = forwardRef(
   (
@@ -81,7 +80,9 @@ const TextInput: FC<TextInputProps> = forwardRef(
             {
               ...(style as object),
               borderBottomWidth: error ? 1 : borderBottomWidth,
-              borderBottomColor: error ? errorColor : color[mode],
+              borderBottomColor: error
+                ? errorColor
+                : standardDarkLightColors[mode],
               marginBottom: error ? 10 : 30,
             },
           ]}>
@@ -105,7 +106,7 @@ const TextInput: FC<TextInputProps> = forwardRef(
             style={[
               styles.textInput,
               {
-                color: color[mode],
+                color: standardDarkLightColors[mode],
               },
             ]}
             onChangeText={text => onChangeText(text)}

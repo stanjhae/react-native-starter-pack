@@ -43,3 +43,8 @@ export const bottomTabConfig = {
     color: 'white',
   },
 };
+
+export const borderBottomColors = {
+  light: '#B2B2B2',
+  dark: '#262626',
+};
