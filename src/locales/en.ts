@@ -22,6 +22,7 @@ export default {
       firstNameRequired: 'First name is required',
       show: 'Show',
       hide: 'Hide',
+      changePassword: 'Change password',
       authenticationFailed: 'Authentication failed',
       noAccount: "We can't find an account with",
       tryAgain: 'Try again',

@@ -4,7 +4,7 @@ import Tab from 'components/Tab/Tab';
 
 const SettingsScreen = () => (
   <ScrollView>
-    <Tab title="Change password" />
+    <Tab title="changePassword" />
   </ScrollView>
 );
 

@@ -19,6 +19,11 @@ const goToMainApp = () => {
   Navigation.setRoot({
     root: {
       bottomTabs: {
+        options: {
+          bottomTabs: {
+            titleDisplayMode: 'alwaysHide',
+          },
+        },
         id: 'bottomTabs',
         children: [
           {
