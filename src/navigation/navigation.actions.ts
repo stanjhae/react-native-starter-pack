@@ -5,7 +5,7 @@ import i18next from 'i18next';
 export const pushScreen = (
   stackToPushTo: string,
   screenToPush: string,
-  headerTitle: string,
+  headerTitle?: string,
   props?: object,
   pushOverBottomTabs?: boolean,
 ) => {
@@ -78,6 +78,7 @@ export const showOverlay = (name: string) =>
   Navigation.showOverlay({
     component: {
       name: name,
+      id: name,
       options: {
         layout: {
           backgroundColor: 'transparent',

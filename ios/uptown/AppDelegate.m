@@ -22,7 +22,7 @@
   [[FBSDKApplicationDelegate sharedInstance] application:application
   didFinishLaunchingWithOptions:launchOptions];
   
-  [RNSplashScreen show];
+  [RNSplashScreen hide];
     return YES;
 }
 

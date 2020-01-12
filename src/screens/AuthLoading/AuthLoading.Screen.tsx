@@ -1,13 +1,16 @@
 import React, { FC, useEffect } from 'react';
-import Text from '../../components/Text/Text';
-import { Navigation } from 'react-native-navigation';
-import ScreenWrapper from '../../components/ScreenWrapper/ScreenWrapper';
+import { Linking } from 'react-native';
+import Text from 'components/Text/Text';
+import ScreenWrapper from 'components/ScreenWrapper/ScreenWrapper';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import { connect } from 'react-redux';
 import { Dispatch } from 'store/index';
 import goToMainApp from 'utils/goToMainApp';
-import {setRoot} from 'utils/utils.functions';
+import { setRoot } from 'utils/utils.functions';
+import crashlytics from '@react-native-firebase/crashlytics';
+import analytics from '@react-native-firebase/analytics';
+import { pushScreen } from 'navigation/navigation.actions';
 
 let update = false;
 
@@ -32,6 +35,12 @@ const AuthLoadingScreen: FC<ReturnType<typeof mapDispatch>> = ({
             .doc(response.uid)
             .get();
           if (user.exists) {
+            await Promise.all([
+              crashlytics().setUserId(response.uid),
+              crashlytics().setUserEmail(user.data()?.email),
+              analytics().setUserId(response.uid),
+            ]);
+            // crashlytics().crash()
             updateUserSuccess({
               ...user.data(),
               emailVerified: response.emailVerified,
@@ -52,6 +61,17 @@ const AuthLoadingScreen: FC<ReturnType<typeof mapDispatch>> = ({
     };
 
     return auth().onAuthStateChanged(onAuthStateChanged);
+  });
+
+  const handleOpenUrl = ({ url }: any) => {
+    const routes = url.replace(/.*?:\/\//g, '').split('/');
+    if (routes[0] === 'profile') {
+      pushScreen('ProfileStack', 'ProfileScreen');
+    }
+  };
+  useEffect(() => {
+    Linking.addEventListener('url', handleOpenUrl);
+    return Linking.removeEventListener('url', handleOpenUrl);
   });
 
   return (

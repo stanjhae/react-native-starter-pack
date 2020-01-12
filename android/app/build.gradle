@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply plugin: 'io.fabric'
 
 import com.android.build.OutputFile
 
@@ -77,7 +78,7 @@ import com.android.build.OutputFile
 
 project.ext.react = [
     entryFile: "index.js",
-    enableHermes: false,  // clean and rebuild if changing
+    enableHermes: true,  // clean and rebuild if changing
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -95,7 +96,7 @@ def enableSeparateBuildPerCPUArchitecture = false
 /**
  * Run Proguard to shrink the Java bytecode in release builds.
  */
-def enableProguardInReleaseBuilds = false
+def enableProguardInReleaseBuilds = true
 
 /**
  * The preferred build flavor of JavaScriptCore.
@@ -188,6 +189,10 @@ android {
 }
 
 dependencies {
+    implementation project(':@react-native-firebase_dynamic-links')
+    implementation project(':@react-native-firebase_perf')
+    implementation project(':@react-native-firebase_analytics')
+    implementation project(':@react-native-firebase_crashlytics')
     implementation project(':@react-native-community_blur')
     implementation project(':react-native-splash-screen')
     implementation project(':react-native-haptic-feedback')
