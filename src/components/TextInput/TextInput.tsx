@@ -112,7 +112,7 @@ const TextInput: FC<TextInputProps> = forwardRef(
                 color: color[mode],
               },
             ]}
-            onChangeText={text => onChangeText(text)}
+            onChangeText={onChangeText}
           />
           {isPassword() ? (
             <OtherText onPress={onPressShowHide}>

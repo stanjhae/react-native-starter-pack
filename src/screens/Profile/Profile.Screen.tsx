@@ -7,7 +7,6 @@ import { Image } from 'react-native';
 import { useForm } from 'react-hook-form';
 import ImagePicker from 'react-native-image-crop-picker';
 import { profileSchema } from 'utils/validationSchema';
-import TopBar from 'components/TopBar/TopBar';
 
 const mapState = (state: RootState) => ({
   user: state.users,
@@ -36,7 +35,6 @@ const ProfileScreen: FC<ProfileScreenProps &
   verifyCurrentPassword,
   forgotPassword,
   logout,
-  currentStack,
 }) => {
   const [avatar, setAvatar] = useState('');
 
@@ -125,52 +123,49 @@ const ProfileScreen: FC<ProfileScreenProps &
   };
 
   return (
-    <>
-      <TopBar currentStack={currentStack} title="general.profile" />
-      <ScrollView>
-        {(!!avatar || !!user.avatar) && (
-          <Image
-            source={{ uri: avatar || user.avatar }}
-            style={{ width: 200, height: 200 }}
-          />
-        )}
-        <Button title={'Upload Image'} onPress={handleUpload} />
-        <TextInput
-          placeholder={'firstName'}
-          defaultValue={user.firstName}
-          onChangeText={setFirstName}
-          onBlur={handleFirstNameValidation}
+    <ScrollView>
+      {(!!avatar || !!user.avatar) && (
+        <Image
+          source={{ uri: avatar || user.avatar }}
+          style={{ width: 200, height: 200 }}
         />
-        {errors.firstName && <Text>{errors.firstName.message}</Text>}
-        <TextInput
-          placeholder={'lastName'}
-          defaultValue={user.lastName}
-          onChangeText={setLastName}
-          onBlur={handleLastNameValidation}
-        />
-        {errors.lastName && <Text>{errors.lastName.message}</Text>}
-        <TextInput
-          placeholder={'telephone'}
-          defaultValue={user.telephone.toString()}
-          onChangeText={setTelephone}
-          onBlur={handleTelephoneValidation}
-        />
-        {errors.telephone && <Text>{errors.telephone.message}</Text>}
+      )}
+      <Button title={'Upload Image'} onPress={handleUpload} />
+      <TextInput
+        placeholder={'firstName'}
+        defaultValue={user.firstName}
+        onChangeText={setFirstName}
+        onBlur={handleFirstNameValidation}
+      />
+      {errors.firstName && <Text>{errors.firstName.message}</Text>}
+      <TextInput
+        placeholder={'lastName'}
+        defaultValue={user.lastName}
+        onChangeText={setLastName}
+        onBlur={handleLastNameValidation}
+      />
+      {errors.lastName && <Text>{errors.lastName.message}</Text>}
+      <TextInput
+        placeholder={'telephone'}
+        defaultValue={user.telephone.toString()}
+        onChangeText={setTelephone}
+        onBlur={handleTelephoneValidation}
+      />
+      {errors.telephone && <Text>{errors.telephone.message}</Text>}
 
-        <Text>
-          email: {user.email} Verified: {user.emailVerified.toString()}
-        </Text>
-        {!user.emailVerified && (
-          <Button title={'Verify Email'} onPress={verifyEmail} />
-        )}
-        {formState.dirty && (
-          <Button title={'Update'} onPress={handleSubmit(handleUpdate)} />
-        )}
-        <Button title={'Update Password'} onPress={promptUpdatePassword} />
-        <Button title={'Forgot Password'} onPress={promptForgotPassword} />
-        <Button title={'Log out'} onPress={logout} />
-      </ScrollView>
-    </>
+      <Text>
+        email: {user.email} Verified: {user.emailVerified.toString()}
+      </Text>
+      {!user.emailVerified && (
+        <Button title={'Verify Email'} onPress={verifyEmail} />
+      )}
+      {formState.dirty && (
+        <Button title={'Update'} onPress={handleSubmit(handleUpdate)} />
+      )}
+      <Button title={'Update Password'} onPress={promptUpdatePassword} />
+      <Button title={'Forgot Password'} onPress={promptForgotPassword} />
+      <Button title={'Log out'} onPress={logout} />
+    </ScrollView>
   );
 };
 

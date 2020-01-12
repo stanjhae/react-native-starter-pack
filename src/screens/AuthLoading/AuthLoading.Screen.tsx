@@ -12,6 +12,12 @@ import crashlytics from '@react-native-firebase/crashlytics';
 import analytics from '@react-native-firebase/analytics';
 import { pushScreen } from 'navigation/navigation.actions';
 
+const gotoChooseAuth = () => {
+  setRoot('ChooseAuthStack', 'ChooseAuthScreen', {
+    topBar: { visible: false },
+  });
+};
+
 let update = false;
 
 const mapDispatch = (dispatch: Dispatch) => ({
@@ -50,12 +56,12 @@ const AuthLoadingScreen: FC<ReturnType<typeof mapDispatch>> = ({
           }
         } else {
           logout();
-          setRoot('ChooseAuthStack', 'ChooseAuthScreen');
+          gotoChooseAuth();
         }
       } else {
         update = true;
         if (!response) {
-          setRoot('ChooseAuthStack', 'ChooseAuthScreen');
+          gotoChooseAuth();
         }
       }
     };

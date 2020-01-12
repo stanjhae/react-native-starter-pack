@@ -584,7 +584,7 @@ PODS:
     - ReactCommon/jscallinvoker (= 0.61.5)
   - ReactNativeDarkMode (0.2.1):
     - React
-  - ReactNativeNavigation (4.0.9):
+  - ReactNativeNavigation (4.4.0):
     - React
   - RNCAsyncStorage (1.7.1):
     - React
@@ -884,7 +884,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
   ReactNativeDarkMode: 0e6e7bdbd387eb949fa7ff238a48f6d6431a428d
-  ReactNativeNavigation: 0d56442c71941833659002268312ae8464044f30
+  ReactNativeNavigation: 6a771d662fedc86f5e8df91debf3c02fe5f3e7f0
   RNCAsyncStorage: 8539fc80a0075fcc9c8e2dff84cd22dc5bf1dacf
   RNFBAnalytics: 57dc0bfad4e40f68779757653676699072651218
   RNFBApp: 5b215aacc09105a1761de31b9a0eb2abcce06253
@@ -899,6 +899,6 @@ SPEC CHECKSUMS:
   RSKImageCropper: a446db0e8444a036b34f3c43db01b2373baa4b2a
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
-PODFILE CHECKSUM: 5e4924ad385c07445a53a5e4ab55e1f169866ae1
+PODFILE CHECKSUM: 27f88f59beb3443521e2fc142dcb01703411f0d5
 
 COCOAPODS: 1.8.4

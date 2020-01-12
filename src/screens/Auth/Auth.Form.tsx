@@ -8,7 +8,7 @@ import { invalidForm } from 'utils/utils.functions';
 import OtherText from 'components/OtherText/OtherText';
 import { mediumFont } from 'constants/constants';
 import { mainAppColor } from 'constants/colors';
-import { showForgotPasswordModal } from 'screens/Auth/Auth.functions';
+import { showModal } from 'navigation/navigation.actions';
 
 interface AuthFormProps {
   currentStack?: string;
@@ -92,9 +92,15 @@ const AuthForm: FC<AuthFormProps> = ({ type, action }) => {
     action(values);
   };
 
-  const goToForgotPassword = () => {
-    showForgotPasswordModal({ email: getValues().email });
-  };
+  const goToForgotPassword = useCallback(() => {
+    console.log('rendering');
+    showModal(
+      'ForgotPasswordStack',
+      'ForgotPasswordScreen',
+      'general.forgotPassword',
+      { email: getValues().email },
+    );
+  }, [getValues]);
 
   return (
     <>

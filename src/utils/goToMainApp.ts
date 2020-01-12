@@ -1,6 +1,19 @@
 import { Navigation } from 'react-native-navigation';
-import { tabBarScale } from 'constants/constants';
+import { boldFont, tabBarScale } from 'constants/constants';
 import { translate } from 'utils/utils.functions';
+
+const topBar = {
+  largeTitle: {
+    visible: true,
+    fontFamily: boldFont,
+  },
+  drawBehind: true,
+  background: {
+    translucent: true,
+  },
+};
+
+// TODO: make code in this file more efficient
 
 const goToMainApp = () => {
   Navigation.setRoot({
@@ -15,6 +28,12 @@ const goToMainApp = () => {
                 {
                   component: {
                     options: {
+                      topBar: {
+                        ...topBar,
+                        title: {
+                          text: translate('general.explore'),
+                        },
+                      },
                       bottomTab: {
                         icon: {
                           scale: tabBarScale,
@@ -36,6 +55,12 @@ const goToMainApp = () => {
                 {
                   component: {
                     options: {
+                      topBar: {
+                        ...topBar,
+                        title: {
+                          text: translate('general.vendors'),
+                        },
+                      },
                       bottomTab: {
                         icon: {
                           scale: tabBarScale,
@@ -57,6 +82,12 @@ const goToMainApp = () => {
                 {
                   component: {
                     options: {
+                      topBar: {
+                        ...topBar,
+                        title: {
+                          text: translate('general.profile'),
+                        },
+                      },
                       bottomTab: {
                         icon: {
                           scale: tabBarScale,

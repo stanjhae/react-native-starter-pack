@@ -1,7 +1,16 @@
 import { Navigation } from 'react-native-navigation';
 import { mediumFont } from 'constants/constants';
-import i18next from 'i18next';
+import { translate } from 'utils/utils.functions';
 
+export const popScreen = (stackToPopFrom: string) => {
+  Navigation.pop(stackToPopFrom);
+};
+
+export const dismissModal = (componentToDismiss: string) => {
+  Navigation.dismissModal(componentToDismiss);
+};
+
+// TODO: Translucent header working with Navigation.showModal but not for Navigation.push
 export const pushScreen = (
   stackToPushTo: string,
   screenToPush: string,
@@ -12,6 +21,15 @@ export const pushScreen = (
   Navigation.push(stackToPushTo, {
     component: {
       options: {
+        topBar: {
+          drawBehind: true,
+          background: {
+            translucent: true,
+          },
+          title: {
+            text: translate(headerTitle),
+          },
+        },
         bottomTabs: {
           visible: !pushOverBottomTabs,
           animate: true,
@@ -20,19 +38,10 @@ export const pushScreen = (
       id: screenToPush,
       name: screenToPush,
       passProps: {
-        currentStack: stackToPushTo,
         ...props,
       },
     },
   });
-};
-
-export const popScreen = (stackToPopFrom: string) => {
-  Navigation.pop(stackToPopFrom);
-};
-
-export const dismissModal = (componentToDismiss: string) => {
-  Navigation.dismissModal(componentToDismiss);
 };
 
 export const showModal = (
@@ -47,17 +56,21 @@ export const showModal = (
       children: [
         {
           component: {
+            id: screenName,
             options: {
               topBar: {
+                background: {
+                  translucent: true,
+                },
                 drawBehind: true,
                 leftButtons: [
                   {
-                    id: 'one',
+                    id: screenName,
                     systemItem: 'stop',
                   },
                 ],
                 title: {
-                  text: i18next.t(headerTitle),
+                  text: translate(headerTitle),
                   fontSize: 15,
                   fontFamily: mediumFont,
                 },
