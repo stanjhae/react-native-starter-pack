@@ -4,7 +4,7 @@ import { translate } from 'utils/utils.functions';
 
 const topBar = {
   largeTitle: {
-    visible: true,
+    visible: false,
     fontFamily: boldFont,
   },
   drawBehind: true,
@@ -19,6 +19,11 @@ const goToMainApp = () => {
   Navigation.setRoot({
     root: {
       bottomTabs: {
+        options: {
+          bottomTabs: {
+            titleDisplayMode: 'alwaysHide',
+          },
+        },
         id: 'bottomTabs',
         children: [
           {
@@ -39,7 +44,7 @@ const goToMainApp = () => {
                           scale: tabBarScale,
                           uri: 'home',
                         },
-                        text: translate('general.explore'),
+                        // text: translate('general.explore'),
                       },
                     },
                     name: 'HomeScreen',
@@ -66,7 +71,7 @@ const goToMainApp = () => {
                           scale: tabBarScale,
                           uri: 'vendors',
                         },
-                        text: translate('general.vendors'),
+                        // text: translate('general.vendors'),
                       },
                     },
                     name: 'VendorsScreen',
@@ -93,7 +98,7 @@ const goToMainApp = () => {
                           scale: tabBarScale,
                           uri: 'profile',
                         },
-                        text: translate('general.profile'),
+                        // text: translate('general.profile'),
                       },
                     },
                     name: 'MoreScreen',

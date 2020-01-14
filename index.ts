@@ -1,4 +1,8 @@
-import { Navigation, OptionsTopBar } from 'react-native-navigation';
+import {
+  Navigation,
+  OptionsBottomTabs,
+  OptionsTopBar,
+} from 'react-native-navigation';
 import registerScreens from 'navigation/registerScreens';
 import './initializeI18next';
 import { bottomTabConfig, layoutColors, mainAppColor } from 'constants/colors';
@@ -9,10 +13,23 @@ import { dismissModal } from 'navigation/navigation.actions';
 
 // TODO: make code in this file more efficient
 
+const defaultBottomTabOptions: OptionsBottomTabs = {
+  drawBehind: true,
+  translucent: true,
+};
+
 const defaultTopBarOptions: OptionsTopBar = {
   title: {
     fontFamily: mediumFont,
     fontSize: baseFontSize,
+  },
+  drawBehind: true,
+  background: {
+    translucent: true,
+  },
+  backButton: {
+    title: '',
+    color: mainAppColor,
   },
 };
 
@@ -25,12 +42,6 @@ Navigation.events().registerNavigationButtonPressedListener(({ buttonId }) => {
 });
 
 eventEmitter.on('currentModeChanged', newMode => {
-  Navigation.mergeOptions('bottomTabs', {
-    bottomTabs: {
-      backgroundColor: bottomTabConfig[newMode].backgroundColor,
-    },
-  });
-
   Navigation.mergeOptions('HomeStack', {
     bottomTab: {
       iconColor: bottomTabConfig[newMode].color,
@@ -79,7 +90,7 @@ registerScreens();
 Navigation.events().registerAppLaunchedListener(async () => {
   Navigation.setDefaultOptions({
     bottomTabs: {
-      backgroundColor: bottomTabConfig[initialMode].backgroundColor,
+      ...defaultBottomTabOptions,
     },
     bottomTab: {
       iconColor: bottomTabConfig[initialMode].color,

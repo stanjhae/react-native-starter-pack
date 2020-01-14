@@ -1,16 +1,12 @@
 import React, { FC } from 'react';
-import { Button } from 'react-native';
-import { pushScreen } from 'navigation/navigation.actions';
 import ScrollView from 'components/ScrollView/ScrollView';
+import MoreProfileSection from 'screens/More/MoreProfileSection/More.ProfileSection';
+import MoreTabs from 'screens/More/MoreTabs/MoreTabs';
 
 const MoreScreen: FC = () => (
   <ScrollView>
-    <Button
-      title="Profile"
-      onPress={() =>
-        pushScreen('ProfileStack', 'ProfileScreen', 'general.profile', {}, true)
-      }
-    />
+    <MoreProfileSection />
+    <MoreTabs />
   </ScrollView>
 );
 

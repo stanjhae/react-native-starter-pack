@@ -22,16 +22,12 @@ export const pushScreen = (
     component: {
       options: {
         topBar: {
-          drawBehind: true,
-          background: {
-            translucent: true,
-          },
           title: {
             text: translate(headerTitle),
           },
         },
         bottomTabs: {
-          visible: !pushOverBottomTabs,
+          visible: pushOverBottomTabs || false,
           animate: true,
         },
       },

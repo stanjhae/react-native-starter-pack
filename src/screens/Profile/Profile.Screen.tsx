@@ -11,6 +11,7 @@ import { profileSchema } from 'utils/validationSchema';
 const mapState = (state: RootState) => ({
   user: state.users,
 });
+
 const mapDispatch = (dispatch: Dispatch) => ({
   verifyEmail: () => dispatch.users.verifyEmail(),
   updateUser: (payload: any) => dispatch.users.updateUser(payload),
