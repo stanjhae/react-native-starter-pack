@@ -77,7 +77,7 @@ const AuthForm: FC<AuthFormProps> = ({ type, action }) => {
   }, [triggerValidation]);
 
   const handleLastNameValidation = useCallback(() => {
-    triggerValidation('firstName').then(null);
+    triggerValidation('lastName').then(null);
   }, [triggerValidation]);
 
   const handleEmailValidation = useCallback(() => {
@@ -118,6 +118,7 @@ const AuthForm: FC<AuthFormProps> = ({ type, action }) => {
             onChangeText={setFirstName}
             onBlur={handleFirstNameValidation}
             error={errors.firstName?.message}
+            accessibilityLabel={'firstName'}
             // @ts-ignore
           />
           <TextInput
@@ -132,6 +133,7 @@ const AuthForm: FC<AuthFormProps> = ({ type, action }) => {
             onChangeText={setLastName}
             onBlur={handleLastNameValidation}
             error={errors.lastName?.message}
+            accessibilityLabel={'lastName'}
             // @ts-ignore
             onSubmitEditing={() => thirdInput.current.focus()}
           />
@@ -151,6 +153,7 @@ const AuthForm: FC<AuthFormProps> = ({ type, action }) => {
         onChangeText={setEmail}
         onBlur={handleEmailValidation}
         error={errors.email?.message}
+        accessibilityLabel={'email'}
         // @ts-ignore
         onSubmitEditing={() => fourthInput.current.focus()}
       />
@@ -166,6 +169,7 @@ const AuthForm: FC<AuthFormProps> = ({ type, action }) => {
         onChangeText={setPassword}
         error={errors.password?.message}
         onBlur={handlePasswordValidation}
+        accessibilityLabel={'password'}
       />
       {type === 'logIn' && (
         <OtherText

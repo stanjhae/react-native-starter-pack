@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import io.invertase.firebase.dynamiclinks.ReactNativeFirebaseDynamicLinksPackage;
+import io.invertase.firebase.perf.ReactNativeFirebasePerfPackage;
 import com.mkuczera.RNReactNativeHapticFeedbackPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.reactnative.ivpusic.imagepicker.PickerPackage;
@@ -22,6 +24,8 @@ import io.invertase.firebase.app.ReactNativeFirebaseAppPackage;
 import io.invertase.firebase.auth.ReactNativeFirebaseAuthPackage;
 import io.invertase.firebase.firestore.ReactNativeFirebaseFirestorePackage;
 import io.invertase.firebase.storage.ReactNativeFirebaseStoragePackage;
+import io.invertase.firebase.crashlytics.ReactNativeFirebaseCrashlyticsPackage;
+import io.invertase.firebase.analytics.ReactNativeFirebaseAnalyticsPackage;
 
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
@@ -52,16 +56,18 @@ public class MainApplication extends NavigationApplication {
                 // No need to add RnnPackage and MainReactPackage
                 return Arrays.<ReactPackage>asList(
                         new LinearGradientPackage(),
-                        new RNReactNativeHapticFeedbackPackage(),
                         new DarkModePackage(),
                         new SafeAreaContextPackage(),
                         new ReactNativeFirebaseAppPackage(),
                         new ReactNativeFirebaseAuthPackage(),
                         new ReactNativeFirebaseFirestorePackage(),
                         new ReactNativeFirebaseStoragePackage(),
+                        new ReactNativeFirebaseCrashlyticsPackage(),
+                        new ReactNativeFirebaseAnalyticsPackage(),
+                        new ReactNativeFirebaseDynamicLinksPackage(),
                         new FBSDKPackage(),
                         new PickerPackage(),
-                        new RNReactNativeHapticFeedbackPackage(),
+                        new ReactNativeFirebasePerfPackage(),
                         new SplashScreenReactPackage()
                 );
             }

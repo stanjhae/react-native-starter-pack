@@ -51,6 +51,14 @@ target 'uptown' do
 
   pod 'react-native-blur', :path => '../node_modules/@react-native-community/blur'
 
+  pod 'RNFBCrashlytics', :path => '../node_modules/@react-native-firebase/crashlytics'
+
+  pod 'RNFBAnalytics', :path => '../node_modules/@react-native-firebase/analytics'
+
+  pod 'RNFBPerf', :path => '../node_modules/@react-native-firebase/perf'
+
+  pod 'RNFBDynamicLinks', :path => '../node_modules/@react-native-firebase/dynamic-links'
+
   target 'uptownTests' do
     inherit! :search_paths
     # Pods for testing
