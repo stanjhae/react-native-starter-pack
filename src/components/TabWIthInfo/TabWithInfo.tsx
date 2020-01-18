@@ -15,7 +15,9 @@ const TabWithInfo: FC<TabProps & TabWithInfoProps> = ({
 }) => (
   <Tab screenToPush={screenToPush} title={title}>
     <View style={TabWithInfoStyles.container}>
-      <Text numberOfLines={1} style={TabWithInfoStyles.info}>{info}</Text>
+      <Text numberOfLines={1} style={TabWithInfoStyles.info}>
+        {info}
+      </Text>
     </View>
   </Tab>
 );

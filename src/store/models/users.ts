@@ -7,7 +7,6 @@ import {
   authenticateWithPassword,
   firebaseImageUpload,
 } from 'store/helpers';
-import { dismissModal } from 'navigation/navigation.actions';
 import { Alert } from 'react-native';
 import storage from '@react-native-firebase/storage';
 import goToMainApp from 'utils/goToMainApp';

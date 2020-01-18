@@ -11,7 +11,6 @@ import { Dispatch } from 'store/index';
 import { useForm } from 'react-hook-form';
 import { forgotPasswordSchema } from 'utils/validationSchema';
 import { invalidForm } from 'utils/utils.functions';
-import { View } from 'react-native';
 import HeaderSpacing from 'components/HeaderSpacing/HeaderSpacing';
 import { dismissModal } from 'navigation/navigation.actions';
 
@@ -87,14 +86,10 @@ const ForgotPasswordScreen: FC<ForgotPasswordScreenProps &
           onChangeText={setEmail}
           error={errors.email?.message}
         />
-        <BottomButton
-          disabled={false}
-          buttonName="reset"
-          onPress={handleSubmit(onPressReset)}
-        />
+        <BottomButton buttonName="reset" onPress={handleSubmit(onPressReset)} />
       </ScrollView>
     </KeyboardAvoidingView>
   );
 };
 
-export default connect(null, mapDispatch)(ForgotPasswordScreen);
+export default connect(null, mapDispatch as Dispatch)(ForgotPasswordScreen);

@@ -1,11 +1,10 @@
-import { ActionSheetIOS, Platform } from 'react-native';
+import { ActionSheetIOS, Alert, Platform } from 'react-native';
 import { translate } from 'utils/utils.functions';
 import {
   removeProfileImage,
   showFullScreenImage,
   uploadProfileImage,
 } from 'screens/More/MoreProfileSection/MoreProfileSection.Functions';
-import { showModal } from 'navigation/navigation.actions';
 
 const translateOption = (text: string): string =>
   translate(`moreScreen.profileSection.image.${text}`);
@@ -37,7 +36,7 @@ export const showImageActionSheet = (
             break;
           }
           case 3: {
-            alert('Take a photo');
+            Alert.alert('Take a photo');
             break;
           }
           case 4: {

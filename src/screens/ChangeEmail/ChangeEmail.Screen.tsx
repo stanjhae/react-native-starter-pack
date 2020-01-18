@@ -1,6 +1,28 @@
-import React from 'react';
-import Text from 'components/Text/Text';
+import React, { FC } from 'react';
+import { Dispatch, RootState } from 'store/index';
+import { connect } from 'react-redux';
+import BottomButton from 'components/BottomButton/BottomButton';
 
-const ChangeEmailScreen = () => <Text>Change email screen</Text>;
+type ChangeEmailScreenProps = ReturnType<typeof mapState> &
+  ReturnType<typeof mapDispatch>;
 
-export default ChangeEmailScreen;
+const ChangeEmailScreen: FC<ChangeEmailScreenProps> = ({
+  emailVerified,
+  verifyEmail,
+}) => (
+  <>
+    {!emailVerified && (
+      <BottomButton buttonName="verifyEmailAddress" onPress={verifyEmail} />
+    )}
+  </>
+);
+
+const mapState = (state: RootState) => ({
+  emailVerified: state.users.emailVerified,
+});
+
+const mapDispatch = (dispatch: Dispatch) => ({
+  verifyEmail: () => dispatch.users.verifyEmail(),
+});
+
+export default connect(mapState, mapDispatch as Dispatch)(ChangeEmailScreen);

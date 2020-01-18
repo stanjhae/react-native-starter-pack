@@ -2,7 +2,6 @@ import { Navigation } from 'react-native-navigation';
 import ChooseAuthScreen from 'screens/ChooseAuth/ChooseAuth.Screen';
 import ComponentProvider from 'components/ComponentProvider/ComponentProvider';
 import AuthLoadingScreen from 'screens/AuthLoading/AuthLoading.Screen';
-import ProfileScreen from 'screens/Profile/Profile.Screen';
 import withRematch from 'store/withRematch';
 import ForgotPasswordScreen from 'screens/ForgotPassword/ForgotPassword.Screen';
 import VendorsScreen from 'screens/Vendors/Vendors.Screen';
@@ -32,11 +31,6 @@ const registerScreens = () => {
     'AuthScreen',
     () => withRematch(ComponentProvider(AuthScreen)),
     () => AuthScreen,
-  );
-  Navigation.registerComponent(
-    'ProfileScreen',
-    () => withRematch(ComponentProvider(ProfileScreen)),
-    () => ProfileScreen,
   );
   Navigation.registerComponent(
     'ForgotPasswordScreen',
