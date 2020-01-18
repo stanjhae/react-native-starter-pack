@@ -13,6 +13,7 @@ import { forgotPasswordSchema } from 'utils/validationSchema';
 import { invalidForm } from 'utils/utils.functions';
 import { View } from 'react-native';
 import HeaderSpacing from 'components/HeaderSpacing/HeaderSpacing';
+import { dismissModal } from 'navigation/navigation.actions';
 
 const mapDispatch = (dispatch: Dispatch) => ({
   forgotPassword: (email: string) => dispatch.users.forgotPassword(email),
@@ -56,7 +57,9 @@ const ForgotPasswordScreen: FC<ForgotPasswordScreenProps &
   const { t } = useTranslation();
 
   const onPressReset = (values: any) => {
-    forgotPassword(values.email).then(null);
+    forgotPassword(values.email).then(() => {
+      dismissModal('ForgotPasswordModal');
+    });
   };
 
   return (
@@ -84,7 +87,11 @@ const ForgotPasswordScreen: FC<ForgotPasswordScreenProps &
           onChangeText={setEmail}
           error={errors.email?.message}
         />
-        <BottomButton buttonName="Reset" onPress={handleSubmit(onPressReset)} />
+        <BottomButton
+          disabled={false}
+          buttonName="reset"
+          onPress={handleSubmit(onPressReset)}
+        />
       </ScrollView>
     </KeyboardAvoidingView>
   );

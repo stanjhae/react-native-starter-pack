@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useRef } from 'react';
+import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import TextInput from 'components/TextInput/TextInput';
 import BottomButton from 'components/BottomButton/BottomButton';
 import { useTranslation } from 'react-i18next';
@@ -21,6 +21,11 @@ const AuthForm: FC<AuthFormProps> = ({ type, action }) => {
   const thirdInput = useRef(null);
   const fourthInput = useRef(null);
   const { t } = useTranslation();
+  const [secureTextEntry, setSecureTextEntry] = useState(true);
+
+  const setShowHide = () => {
+    setSecureTextEntry(!secureTextEntry);
+  };
 
   const {
     register,
@@ -157,9 +162,11 @@ const AuthForm: FC<AuthFormProps> = ({ type, action }) => {
       <TextInput
         ref={fourthInput}
         autoCorrect={false}
-        secureTextEntry
+        secureTextEntry={secureTextEntry}
+        onPressShowHide={setShowHide}
+        showHide={secureTextEntry ? 'show' : 'hide'}
         autoCapitalize="none"
-        textContentType="newPassword"
+        textContentType={type === 'logIn' ? 'password' : 'newPassword'}
         keyboardType="default"
         autoCompleteType="password"
         placeholder="general.password"
@@ -176,8 +183,9 @@ const AuthForm: FC<AuthFormProps> = ({ type, action }) => {
         </OtherText>
       )}
       <BottomButton
+        disabled={false}
         onPress={handleSubmit(handleAction)}
-        buttonName={`general.${type}`}
+        buttonName={type}
       />
     </>
   );

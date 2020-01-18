@@ -1,7 +1,7 @@
-import { MoreTabProps } from 'screens/../../../components/TabStyles/TabStyles';
 import { onPressLogout } from 'screens/More/MoreTabs/MoreTabs.functions';
+import { TabProps } from 'components/Tab/Tab';
 
-const moreTabs: MoreTabProps[] = [
+const moreTabs: TabProps[] = [
   {
     title: 'general.settings',
     screenToPush: 'Settings',

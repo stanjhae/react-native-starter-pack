@@ -12,6 +12,10 @@ import AuthScreen from 'screens/Auth/Auth.Screen';
 import ActionOverlay from 'components/ActionOverlay/ActionOverlay';
 import SettingsScreen from 'screens/Settings/Settings.Screen';
 import FeedbackScreen from 'screens/Feedback/Feedback.Screen';
+import ChangePasswordScreen from 'screens/ChangePassword/ChangePassword.Screen';
+import MeScreen from 'screens/Me/Me.Screen';
+import FullScreenProfileImageScreen from 'screens/FullScreenProfileImage/FullScreenProfileImage.Screen';
+import ChangeEmailScreen from 'screens/ChangeEmail/ChangeEmail.Screen';
 
 const registerScreens = () => {
   Navigation.registerComponent(
@@ -56,13 +60,33 @@ const registerScreens = () => {
   );
   Navigation.registerComponent(
     'SettingsScreen',
-    () => ComponentProvider(SettingsScreen),
+    () => withRematch(ComponentProvider(SettingsScreen)),
     () => SettingsScreen,
   );
   Navigation.registerComponent(
     'FeedbackScreen',
     () => ComponentProvider(FeedbackScreen),
     () => FeedbackScreen,
+  );
+  Navigation.registerComponent(
+    'ChangePasswordScreen',
+    () => ComponentProvider(ChangePasswordScreen),
+    () => ChangePasswordScreen,
+  );
+  Navigation.registerComponent(
+    'MeScreen',
+    () => withRematch(ComponentProvider(MeScreen)),
+    () => MeScreen,
+  );
+  Navigation.registerComponent(
+    'FullScreenProfileImageScreen',
+    () => withRematch(ComponentProvider(FullScreenProfileImageScreen)),
+    () => FullScreenProfileImageScreen,
+  );
+  Navigation.registerComponent(
+    'ChangeEmailScreen',
+    () => withRematch(ComponentProvider(ChangeEmailScreen)),
+    () => ChangeEmailScreen,
   );
   Navigation.registerComponent('ActionOverlay', () => ActionOverlay);
 };

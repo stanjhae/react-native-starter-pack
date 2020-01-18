@@ -1,19 +1,12 @@
 import React, { FC } from 'react';
-import { StyleProp, TouchableOpacity as TO, ViewStyle } from 'react-native';
-
-interface TouchableOpacityProps {
-  onPress: any;
-  style?: StyleProp<ViewStyle>;
-}
+import { TouchableOpacity as TO, TouchableOpacityProps } from 'react-native';
 
 const TouchableOpacity: FC<TouchableOpacityProps> = ({
-  onPress,
   children,
-  style,
   ...props
 }) => {
   return (
-    <TO {...props} onPress={onPress} style={style} activeOpacity={1}>
+    <TO {...props} delayLongPress={100} activeOpacity={1}>
       {children}
     </TO>
   );

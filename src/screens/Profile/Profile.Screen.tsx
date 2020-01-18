@@ -57,7 +57,7 @@ const ProfileScreen: FC<ProfileScreenProps &
     register('lastName');
     register('telephone');
     register('uid');
-  }, [register]);
+  }, [errors, register]);
 
   //TODO: Improve implementation
   const setFirstName = useCallback(

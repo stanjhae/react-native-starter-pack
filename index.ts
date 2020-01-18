@@ -37,6 +37,11 @@ Navigation.events().registerNavigationButtonPressedListener(({ buttonId }) => {
   switch (buttonId) {
     case 'ForgotPasswordScreen': {
       dismissModal('ForgotPasswordStack');
+      break;
+    }
+    case 'FullScreenProfileImageScreen': {
+      dismissModal('FullScreenProfileImageScreen');
+      break;
     }
   }
 });
@@ -87,7 +92,7 @@ eventEmitter.on('currentModeChanged', newMode => {
 
 registerScreens();
 
-Navigation.events().registerAppLaunchedListener(async () => {
+Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setDefaultOptions({
     bottomTabs: {
       ...defaultBottomTabOptions,

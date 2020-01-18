@@ -1,8 +1,6 @@
 import React, { FC, useEffect } from 'react';
-import { StyleSheet, Animated, View } from 'react-native';
-import Lottie from 'lottie-react-native';
+import { StyleSheet, Animated, View, ActivityIndicator } from 'react-native';
 import constants from 'constants/constants';
-import { BlurView } from '@react-native-community/blur';
 const scale = new Animated.Value(0);
 
 const ActionOverlay: FC = () => {
@@ -16,16 +14,9 @@ const ActionOverlay: FC = () => {
   return (
     <View style={ActionOverlayStyles.container}>
       <Animated.View style={{ transform: [{ scale }] }}>
-        <BlurView
-          blurAmount={200}
-          style={ActionOverlayStyles.blurView}
-          blurType="regular">
-          <Lottie
-            autoPlay
-            style={{ height: 50 }}
-            source={require('../../../assets/loading.json')}
-          />
-        </BlurView>
+        <View style={ActionOverlayStyles.centerBox}>
+          <ActivityIndicator />
+        </View>
       </Animated.View>
     </View>
   );
@@ -37,7 +28,16 @@ const ActionOverlayStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  blurView: {
+  centerBox: {
+    backgroundColor: 'black',
+    shadowColor: '#111',
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.8,
+    shadowRadius: 15,
+    elevation: 5,
     borderRadius: 15,
     height: 150,
     width: 150,

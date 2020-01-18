@@ -77,7 +77,7 @@ export const authenticateWithPassword = async (
 
   auth()
     .fetchSignInMethodsForEmail(email)
-    .then(method => {
+    .then((method: any) => {
       if (!method.length) {
         // Check if user exists
         Alert.alert(
@@ -104,8 +104,8 @@ export const authenticateWithPassword = async (
         // If user has a facebook account, log them in with facebook.
         //TODO: This should be handled elsewhere
         Alert.alert(
-          'Account was created with facebook',
-          `Please sign in with facebook to set a password for ${email}`,
+          i18next.t('alerts.accountWasCreatedWithFacebook'),
+          `${i18next.t('alerts.signInWithFacebookToSetPassword')}${email}`,
           [
             {
               text: 'Continue with facebook',
