@@ -43,6 +43,7 @@ export interface TextInputProps {
   error?: string;
   showHide?: string;
   onPressShowHide?: () => void;
+  accessibilityLabel?: string;
 }
 
 const TextInput: FC<TextInputProps> = forwardRef(
@@ -66,6 +67,7 @@ const TextInput: FC<TextInputProps> = forwardRef(
       error,
       showHide,
       onPressShowHide,
+      accessibilityLabel,
     },
     ref,
   ) => {
@@ -104,13 +106,15 @@ const TextInput: FC<TextInputProps> = forwardRef(
             placeholderTextColor="#999"
             placeholder={t(placeholder)}
             clearButtonMode={isPassword() ? 'never' : 'always'}
+            accessibilityLabel={accessibilityLabel}
+            accessible
             style={[
               styles.textInput,
               {
                 color: standardDarkLightColors[mode],
               },
             ]}
-            onChangeText={text => onChangeText(text)}
+            onChangeText={onChangeText}
           />
           {isPassword() ? (
             <OtherText onPress={onPressShowHide}>

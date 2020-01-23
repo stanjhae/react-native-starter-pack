@@ -7,6 +7,11 @@ import {
   authenticateWithPassword,
   firebaseImageUpload,
 } from 'store/helpers';
+import {
+  dismissModal,
+  dismissOverlay,
+  showOverlay,
+} from 'navigation/navigation.actions';
 import { Alert } from 'react-native';
 import storage from '@react-native-firebase/storage';
 import goToMainApp from 'utils/goToMainApp';
@@ -50,6 +55,7 @@ const model = {
   effects: (dispatch: Dispatch) => ({
     //TODO: Declare type
     signUp: (payload: any) => {
+      showOverlay('ActionOverlay');
       auth()
         .createUserWithEmailAndPassword(payload.email, payload.password)
         .then(response => {
@@ -63,18 +69,24 @@ const model = {
                 ...payload,
                 uid: response.user.uid,
               });
+              dismissOverlay('ActionOverlay');
               goToMainApp();
             });
         })
         .catch(error => {
-          Alert.alert('An error has occured', error.code);
+          Alert.alert('An error has occurred', error.code);
         });
     },
     login: ({ email, password }: any) => {
-      authenticateWithPassword({ email, password }, dispatch).then(null);
+      showOverlay('ActionOverlay');
+      authenticateWithPassword({ email, password }, dispatch).then(() => {
+        dismissOverlay('ActionOverlay');
+      });
     },
     facebookLogin: async () => {
-      authenticateWithFacebook(dispatch).then(null);
+      authenticateWithFacebook(dispatch).then(() => {
+        dismissOverlay('ActionOverlay');
+      });
     },
     verifyCurrentPassword: async ({ email, password }: any) => {
       const credential = auth.EmailAuthProvider.credential(email, password);

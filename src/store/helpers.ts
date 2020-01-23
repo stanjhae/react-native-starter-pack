@@ -9,9 +9,9 @@ import { Alert } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import { Dispatch } from 'store/index';
 import storage from '@react-native-firebase/storage';
-import { pushScreen } from 'navigation/navigation.actions';
 import i18next from 'i18next';
 import goToMainApp from 'utils/goToMainApp';
+import { showOverlay } from 'navigation/navigation.actions';
 
 export const facebookLogin = async (): Promise<any> => {
   const res = await LoginManager.logInWithPermissions([
@@ -72,79 +72,81 @@ export const getUserData = (response: any): Promise<any> => {
 export const authenticateWithPassword = async (
   cred: any,
   dispatch: Dispatch,
-) => {
-  const { email, password } = cred;
+): Promise<any> => {
+  return new Promise(resolve => {
+    const { email, password } = cred;
 
-  auth()
-    .fetchSignInMethodsForEmail(email)
-    .then((method: any) => {
-      if (!method.length) {
-        // Check if user exists
-        Alert.alert(
-          i18next.t('general.authenticationFailed'),
-          `${i18next.t('general.noAccount')} ${email}.`,
-        );
-      } else if (method.includes('password')) {
-        // If user has a password, log them in
-        auth()
-          .signInWithEmailAndPassword(email, password)
-          .then(response => {
-            getUserData(response).then(usr => {
-              dispatch.users.updateUserSuccess({
-                ...usr,
-                emailVerified: response.user.emailVerified,
-              });
-              goToMainApp();
-            });
-          })
-          .catch(error => {
-            Alert.alert('Authentication failed', error.code);
-          });
-      } else if (method.includes('facebook.com')) {
-        // If user has a facebook account, log them in with facebook.
-        //TODO: This should be handled elsewhere
-        Alert.alert(
-          i18next.t('alerts.accountWasCreatedWithFacebook'),
-          `${i18next.t('alerts.signInWithFacebookToSetPassword')}${email}`,
-          [
-            {
-              text: 'Continue with facebook',
-              onPress: () => {
-                authenticateWithFacebook(dispatch).then(() => {
-                  // If facebook login is successful, prompt to update password.
-                  Alert.prompt(
-                    'Set password',
-                    'We noticed your account does not have a password. Will you like to set one?',
-                    pass => {
-                      // Create credential for firebase
-                      const credential = auth.EmailAuthProvider.credential(
-                        email,
-                        pass,
-                      );
-
-                      // Link the password.
-                      auth()
-                        .currentUser?.linkWithCredential(credential)
-                        .then(() => {
-                          Alert.alert('Password set successfully');
-                        });
-                    },
-                  );
+    auth()
+      .fetchSignInMethodsForEmail(email)
+      .then((method: any) => {
+        if (!method.length) {
+          // Check if user exists
+          Alert.alert(
+            i18next.t('general.authenticationFailed'),
+            `${i18next.t('general.noAccount')} ${email}.`,
+          );
+        } else if (method.includes('password')) {
+          // If user has a password, log them in
+          auth()
+            .signInWithEmailAndPassword(email, password)
+            .then(response => {
+              getUserData(response).then(usr => {
+                dispatch.users.updateUserSuccess({
+                  ...usr,
+                  emailVerified: response.user.emailVerified,
                 });
+                goToMainApp();
+              });
+            })
+            .catch(error => {
+              Alert.alert('Authentication failed', error.code);
+            });
+        } else if (method.includes('facebook.com')) {
+          // If user has a facebook account, log them in with facebook.
+          //TODO: This should be handled elsewhere
+          Alert.alert(
+            i18next.t('alerts.accountWasCreatedWithFacebook'),
+            `${i18next.t('alerts.signInWithFacebookToSetPassword')}${email}`,
+            [
+              {
+                text: 'Continue with facebook',
+                onPress: () => {
+                  authenticateWithFacebook(dispatch).then(() => {
+                    // If facebook login is successful, prompt to update password.
+                    Alert.prompt(
+                      'Set password',
+                      'We noticed your account does not have a password. Will you like to set one?',
+                      pass => {
+                        // Create credential for firebase
+                        const credential = auth.EmailAuthProvider.credential(
+                          email,
+                          pass,
+                        );
+
+                        // Link the password.
+                        auth()
+                          .currentUser?.linkWithCredential(credential)
+                          .then(() => {
+                            Alert.alert('Password set successfully');
+                          });
+                      },
+                    );
+                  });
+                },
               },
-            },
-            {
-              text: 'Cancel',
-              onPress: () => console.log('Cancel Pressed'),
-              style: 'cancel',
-            },
-          ],
-        );
-      }
-    })
-    .catch(error => {
-      console.warn('error', error);
-    });
+              {
+                text: 'Cancel',
+                onPress: () => console.log('Cancel Pressed'),
+                style: 'cancel',
+              },
+            ],
+          );
+        }
+      })
+      .catch(error => {
+        console.warn('error', error);
+      });
+  });
 };
 
 export const authenticateWithFacebook = async (
@@ -153,6 +155,7 @@ export const authenticateWithFacebook = async (
   return new Promise(async resolve => {
     // Get access token from facebook
     const data = await facebookLogin();
+    showOverlay('ActionOverlay');
     if (!data) {
       return false;
     }
@@ -188,6 +191,7 @@ export const authenticateWithFacebook = async (
                   ...user,
                   uid: response.user.uid,
                 });
+                goToMainApp();
                 response.user.sendEmailVerification().then(null);
               });
             });
@@ -207,7 +211,7 @@ export const authenticateWithFacebook = async (
                         ...userr,
                         emailVerified: usr.user.emailVerified,
                       });
-                      pushScreen('ChooseAuthStack', 'ProfileScreen');
+                      goToMainApp();
                     });
                   });
                 });
@@ -224,7 +228,7 @@ export const authenticateWithFacebook = async (
                   ...usr,
                   emailVerified: response.user.emailVerified,
                 });
-                pushScreen('ChooseAuthStack', 'ProfileScreen');
+                goToMainApp();
                 resolve();
               });
             });

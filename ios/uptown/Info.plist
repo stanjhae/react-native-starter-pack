@@ -26,6 +26,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb1445614175607774</string>
+				<string>uptownapp</string>
 			</array>
 		</dict>
 	</array>
