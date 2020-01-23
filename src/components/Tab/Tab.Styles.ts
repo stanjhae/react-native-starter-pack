@@ -10,7 +10,7 @@ const TabStyles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     flexDirection: 'row',
-    paddingVertical: 17,
+    height: 53,
     borderBottomWidth,
   },
   tabName: {
@@ -18,7 +18,7 @@ const TabStyles = StyleSheet.create({
     fontSize: baseFontSize,
   },
   tabNameContainer: {
-    flex: 1,
+    marginRight: 20,
   },
 });
 

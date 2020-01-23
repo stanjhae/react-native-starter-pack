@@ -5,6 +5,7 @@ import constants, { boldFont } from '../../constants/constants';
 import OtherText from '../OtherText/OtherText';
 import LinearGradient from 'react-native-linear-gradient';
 import { useTranslation } from 'react-i18next';
+import { buttonColor } from 'constants/colors';
 
 interface BottomButtonProps {
   buttonName: string;
@@ -20,10 +21,10 @@ const BottomButton: FC<BottomButtonProps> = ({ buttonName, onPress }) => {
       <LinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
-        colors={['#00a3ff', '#0072ff']}
+        colors={buttonColor}
         style={BottomButtonStyles.container}>
         <OtherText style={{ fontFamily: boldFont }} color="white">
-          {t(buttonName)}
+          {t(`general.${buttonName}`)}
         </OtherText>
       </LinearGradient>
     </TouchableOpacity>

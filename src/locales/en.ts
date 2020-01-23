@@ -1,8 +1,14 @@
 export default {
   translation: {
+    alerts: {
+      accountWasCreatedWithFacebook: 'Account was created with facebook',
+      signInWithFacebookToSetPassword:
+        'Please sign in with facebook to set a password for ',
+    },
     general: {
       logIn: 'Log In',
       signUp: 'Sign Up',
+      phoneNumber: 'Phone number',
       facebook: 'Facebook',
       emailAddress: 'Email address',
       forgotPassword: 'Forgot password',
@@ -10,8 +16,13 @@ export default {
       firstName: 'First name',
       lastName: 'Last name',
       vendors: 'Vendors',
+      reset: 'Reset',
+      passwordResetLinkSent:
+        'A password reset link has been sent to your email',
       explore: 'Explore',
       profile: 'Profile',
+      me: 'Me',
+      done: 'Done',
       feedback: 'Feedback',
       settings: 'Settings',
       logout: 'Logout',
@@ -32,6 +43,7 @@ export default {
       dontHaveAnAccount: "Don't have an account?",
     },
     forgotPassword: {
+      tabTitle: 'Forgot password?',
       enterYourEmail: 'Enter your email to reset your password.',
     },
     moreScreen: {

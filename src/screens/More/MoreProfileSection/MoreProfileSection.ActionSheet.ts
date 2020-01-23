@@ -1,15 +1,17 @@
-import { pushScreen } from 'navigation/navigation.actions';
-import { ActionSheetIOS, Platform } from 'react-native';
+import { ActionSheetIOS, Alert, Platform } from 'react-native';
 import { translate } from 'utils/utils.functions';
-
-export const onPressProfile = () => {
-  pushScreen('ProfileStack', 'ProfileScreen', 'general.profile');
-};
+import {
+  removeProfileImage,
+  showFullScreenImage,
+  uploadProfileImage,
+} from 'screens/More/MoreProfileSection/MoreProfileSection.Functions';
 
 const translateOption = (text: string): string =>
   translate(`moreScreen.profileSection.image.${text}`);
 
-export const showImageActionSheet = () => {
+export const showImageActionSheet = (
+  callBack: (image: string) => void,
+): void => {
   if (Platform.OS === 'ios') {
     ActionSheetIOS.showActionSheetWithOptions(
       {
@@ -26,19 +28,19 @@ export const showImageActionSheet = () => {
       buttonIndex => {
         switch (buttonIndex) {
           case 1: {
-            alert('View photo');
+            showFullScreenImage();
             break;
           }
           case 2: {
-            alert('Choose from library');
+            uploadProfileImage(callBack);
             break;
           }
           case 3: {
-            alert('Take a photo');
+            Alert.alert('Take a photo');
             break;
           }
-          case 3: {
-            alert('Remove photo');
+          case 4: {
+            removeProfileImage();
             break;
           }
         }

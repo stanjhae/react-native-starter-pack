@@ -7,7 +7,7 @@ export default {
       emailAddress: 'Email address',
       forgotPassword: 'Forgot password',
       password: 'Password',
-      firstName: 'First name',
+      firstName: 'Nev',
       lastName: 'Last name',
       vendors: 'Vendors',
       explore: 'Explore',

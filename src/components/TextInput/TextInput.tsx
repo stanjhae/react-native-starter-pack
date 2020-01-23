@@ -19,8 +19,9 @@ import { useDarkModeContext } from 'react-native-dark-mode';
 import { useTranslation } from 'react-i18next';
 import { errorColor } from 'constants/colors';
 import OtherText from 'components/OtherText/OtherText';
+import ErrorText from 'components/ErrorText/ErrorText';
 
-interface TextInputProps {
+export interface TextInputProps {
   onChangeText: (text: string) => void;
   onBlur?: () => void;
   placeholder: string;
@@ -85,7 +86,7 @@ const TextInput: FC<TextInputProps> = forwardRef(
               borderBottomColor: error
                 ? errorColor
                 : standardDarkLightColors[mode],
-              marginBottom: error ? 10 : 30,
+              marginBottom: error ? 5 : 30,
             },
           ]}>
           <Input
@@ -117,13 +118,11 @@ const TextInput: FC<TextInputProps> = forwardRef(
           />
           {isPassword() ? (
             <OtherText onPress={onPressShowHide}>
-              {showHide && t(showHide)}
+              {showHide && t(`general.${showHide}`)}
             </OtherText>
           ) : null}
         </View>
-        {error ? (
-          <OtherText style={styles.errorText}>{t(error)}</OtherText>
-        ) : null}
+        {error ? <ErrorText error={error} /> : null}
       </>
     );
   },

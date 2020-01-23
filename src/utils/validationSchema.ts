@@ -1,11 +1,13 @@
 import * as yup from 'yup';
 
+const firstNameRequired = 'general.firstNameRequired';
+
 //TODO: Investigate shape and improve schema
 export const signUpSchema = yup.object().shape({
   firstName: yup
     .string()
     .trim()
-    .required('general.firstNameRequired'),
+    .required(firstNameRequired),
   lastName: yup.string().trim(),
   email: yup
     .string()
@@ -35,7 +37,7 @@ export const profileSchema = yup.object().shape({
   firstName: yup
     .string()
     .trim()
-    .required(),
+    .required(firstNameRequired),
   lastName: yup
     .string()
     .trim()

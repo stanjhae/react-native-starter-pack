@@ -16,6 +16,7 @@ import { Alert } from 'react-native';
 import storage from '@react-native-firebase/storage';
 import goToMainApp from 'utils/goToMainApp';
 import { setRoot } from 'utils/utils.functions';
+import i18next from 'i18next';
 
 export type UsersState = {
   uid: string;
@@ -114,8 +115,7 @@ const model = {
       auth()
         .sendPasswordResetEmail(email)
         .then(() => {
-          dismissModal('ForgotPasswordModal');
-          Alert.alert('Password reset link has been sent to your email');
+          Alert.alert(i18next.t('general.passwordResetLinkSent'));
         })
         .catch(error => {
           Alert.alert('An error has occurred', error.code);

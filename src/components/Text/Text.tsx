@@ -1,21 +1,24 @@
 import React, { FC } from 'react';
-import { StyleProp, Text as T, TextStyle } from 'react-native';
+import { StyleProp, Text as T, TextProps, TextStyle } from 'react-native';
 import {
   DynamicStyleSheet,
   DynamicValue,
   useDynamicStyleSheet,
 } from 'react-native-dark-mode';
-import { baseFontSize, normalFont } from '../../constants/constants';
+import { baseFontSize, normalFont } from 'constants/constants';
 
-interface TextProps {
+interface TProps extends TextProps {
   style?: StyleProp<TextStyle>;
   onPress?: any;
 }
 
-const Text: FC<TextProps> = ({ children, style, onPress }) => {
+const Text: FC<TProps> = ({ children, style, onPress, ...props }) => {
   const TextStyles = useDynamicStyleSheet(styles);
   return (
-    <T onPress={onPress} style={[TextStyles.text, { ...(style as object) }]}>
+    <T
+      {...props}
+      onPress={onPress}
+      style={[TextStyles.text, { ...(style as object) }]}>
       {children}
     </T>
   );
